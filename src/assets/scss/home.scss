@@ -7,47 +7,49 @@
     }
     &__block{
       position: absolute;
-      width: 500px;
-      height: 470px;
+      @include adaptiveValue("width", 500, 150);
+      @include adaptiveValue("height",470, 105);
       top: 0;
-      left: 60px;
+      @include adaptiveValue("left",65,40);
       background-color: $white;
-      padding: 76px 40px 0 40px;
+      @include adaptiveValue("padding-top",76,5);
+      @include adaptiveValue("padding-left",40,5);
+      @include adaptiveValue("padding-right",40,5);
     }
   }
 .block{
     &__feature{
         color: $secondColor;
         font-family: 'Open Sans', sans-serif;
-        font-size: 20px;
+        @include adaptiveValue("font-size",16,8)
     }
     &__title{
-        margin-top: 10px;
+        @include adaptiveValue("margin-top",10,5);
         font-weight: 700;
-        font-size: 32px;
+        @include adaptiveValue("font-size",32,10);
         font-family: $fontFamily;
-        line-height: 41px;
+        @include adaptiveValue("line-height",41,14);
     }
     &__name{
         color: $secondColor;
         font-family: 'Open Sans', sans-serif;
         display: flex;
         align-items: center;
-        gap: 10px;
-        margin-top: 20px;
-        font-size: 16px;
+        @include adaptiveValue("gap",10,5);
+        @include adaptiveValue("margin-top",20,5);
+        @include adaptiveValue("font-size",16,6)
     }
     &__dot{
         background-color: $secondColor;
-        width: 3px;
-        height: 3px;
+        @include adaptiveValue("width",3,2);
+        @include adaptiveValue("height",3,2);
         border-radius: 50%;
     }
     &__text{
         font-family: 'Open Sans', sans-serif;
-        margin-top: 15px;
-        font-size: 16px;
-        line-height: 24px;
+        @include adaptiveValue("margin-top",15,4);
+        @include adaptiveValue("font-size",16,7);
+        @include adaptiveValue("line-height",24,10);
     }
 }
 

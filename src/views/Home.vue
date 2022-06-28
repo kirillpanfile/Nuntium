@@ -10,13 +10,45 @@
         <p>May 7, 2019 (10 mins read)</p>
       </div>
       <div class="block__text">
-        Proident aliquip velit qui commodo officia qui consectetur dolor ullamco aliquip elit incididunt. Ea minim ex consectetur excepteur. Ex laborum nostrud mollit sint consectetur Lorem amet aliqua do enim. Commodo duis dolor anim excepteur. In aliquip mollit nulla consequat velit magna.
+        {{ sliceText }}
       </div>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  data(){
+    return{
+      text: 'Proident aliquip velit qui commodo officia qui consectetur dolor ullamco aliquip elit incididunt. Ea minim ex consectetur excepteur. Ex laborum nostrud mollit sint consectetur Lorem amet aliqua do enim. Commodo duis dolor anim excepteur. In aliquip mollit nulla consequat velit magna.',
+      DefaultWidth: 0
+    }
+  },
+  mounted() {
+    window.addEventListener("resize", () => {
+      this.DefaultWidth = window.innerWidth
+    })
+  },
+  computed: {
+    sliceText(){
+      if(this.DefaultWidth > 650){
+        this.text = 'Proident aliquip velit qui commodo officia qui consectetur dolor ullamco aliquip elit incididunt. Ea minim ex consectetur excepteur. Ex laborum nostrud mollit sint consectetur Lorem amet aliqua do enim. Commodo duis dolor anim excepteur. In aliquip mollit nulla consequat velit magna.'
+        return this.text
+      }
+      else if(this.DefaultWidth <= 650 && this.DefaultWidth > 500){
+        this.text = 'Proident aliquip velit qui commodo officia qui consectetur dolor ullamco aliquip elit incididunt. Ea minim ex consectetur excepteur. Ex laborum nostrud mollit sint consectetur Lorem amet aliqua do enim. Commodo duis dolor anim excepteur.'
+        return this.text
+      }
+      else if(this.DefaultWidth < 500 && this.DefaultWidth > 400){
+        this.text = 'Proident aliquip velit qui commodo officia qui consectetur dolor ullamco aliquip elit incididunt. Ea minim ex consectetur excepteur. Ex laborum nostrud mollit sint consectetur Lorem amet aliqua do enim.'
+        return this.text
+      }
+      else if(this.DefaultWidth < 400){
+        this.text = 'Proident aliquip velit qui commodo officia qui consectetur dolor ullamco aliquip elit incididunt. Ea minim ex consectetur excepteur.'
+        return this.text
+      }
+    }
+  }
+};
 </script>
 
