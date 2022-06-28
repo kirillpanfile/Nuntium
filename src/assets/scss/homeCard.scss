@@ -1,0 +1,14 @@
+.card{
+    font-family: 'Open Sans', sans-serif;
+    
+    //////////////////////////////////////
+    margin: 100px auto; //DELETE THIS
+    //////////////////////////////////////
+    
+    &__wrapper{
+        display: flex;
+        justify-content: space-between;
+        max-width: 860px;
+        outline: 1px solid green;
+    }
+}

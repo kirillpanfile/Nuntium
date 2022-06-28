@@ -16,10 +16,13 @@
       </div>
     </div>
   </div>
+
+  <home-card></home-card>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
+import HomeCard from '@/components/UI/HomeCard'
 export default {
   data() {
     return {
@@ -54,5 +57,8 @@ export default {
       }
     },
   },
+  components: {
+    HomeCard
+  }
 };
 </script>
