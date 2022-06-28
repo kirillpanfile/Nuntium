@@ -1,13 +1,15 @@
 <template>
   <app-navbar />
-  <router-view></router-view>
+  <main class="app__container">
+    <router-view></router-view>
+  </main>
 </template>
 
 <script>
 export default {
   name: "App",
-  async mounted() {
-    let data = await fetch("/api/posts");
+  mounted() {
+    this.$store.dispatch("fetchPosts");
   },
 };
 </script>
