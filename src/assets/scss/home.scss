@@ -1,3 +1,53 @@
-//====================================================================================================
+.home{
+    margin-top: 50px;
+    position: relative;
+    color: $mainColor;
+    img{
+      width: 100%;
+    }
+    &__block{
+      position: absolute;
+      width: 500px;
+      height: 470px;
+      top: 0;
+      left: 60px;
+      background-color: $white;
+      padding: 76px 40px 0 40px;
+    }
+  }
+.block{
+    &__feature{
+        color: $secondColor;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 20px;
+    }
+    &__title{
+        margin-top: 10px;
+        font-weight: 700;
+        font-size: 32px;
+        font-family: $fontFamily;
+        line-height: 41px;
+    }
+    &__name{
+        color: $secondColor;
+        font-family: 'Open Sans', sans-serif;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-top: 20px;
+        font-size: 16px;
+    }
+    &__dot{
+        background-color: $secondColor;
+        width: 3px;
+        height: 3px;
+        border-radius: 50%;
+    }
+    &__text{
+        font-family: 'Open Sans', sans-serif;
+        margin-top: 15px;
+        font-size: 16px;
+        line-height: 24px;
+    }
+}
 
-//====================================================================================================
