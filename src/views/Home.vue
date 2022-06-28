@@ -59,6 +59,7 @@ export default {
   },
   computed: {
     ...mapGetters(["featuredPost"]),
+    ...mapGetters(["featuredPosts"]),
     sliceText() {
       if (this.DefaultWidth > 650) {
         this.text =

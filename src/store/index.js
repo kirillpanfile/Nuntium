@@ -6,8 +6,10 @@ export default createStore({
   },
   getters: {
     featuredPost: (state) => {
-      //return posts with highest samount of views
       return state.posts.sort((a, b) => b.views - a.views).slice(0, 1);
+    },
+    featuredPosts: (state) => {
+      return state.posts.sort((a, b) => b.views - a.views).slice(0, 3);
     },
   },
   mutations: {
