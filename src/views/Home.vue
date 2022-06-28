@@ -20,9 +20,16 @@
   <div class="editor">
     <div class="editor__title">Editor's Picks</div>
     <div class="editor__wrapper">
-      <home-card></home-card>
-      <home-card></home-card>
-      <home-card></home-card>
+      <home-card
+        v-for="item in featuredPosts"
+        :key="item.id"
+        :tag="item.tag"
+        :title="item.title"
+        :description="item.description"
+        :author="item.author"
+        :date="item.date"
+        :image="item.image"
+      ></home-card>
     </div>
   </div>
   <div class="flower">
