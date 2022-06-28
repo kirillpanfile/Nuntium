@@ -17,20 +17,19 @@
     </div>
   </div>
 
-  <home-card></home-card>
   <div class="editor">
     <div class="editor__title">Editor's Picks</div>
     <div class="editor__wrapper">
-
+      <home-card></home-card>
+      <home-card></home-card>
+      <home-card></home-card>
     </div>
   </div>
   <div class="flower">
-    <img src="../assets/home-flower/flower-image.png" alt="">
+    <img src="../assets/home-flower/flower-image.png" alt="" />
     <div class="flower__block block">
       <div class="block__feature">INTERIOR</div>
-      <div class="block__title">
-        Laborum Ullamco Sunt id ut Sunt
-      </div>
+      <div class="block__title">Laborum Ullamco Sunt id ut Sunt</div>
       <div class="block__name">
         <p>Bessie Hawkins</p>
         <div class="block__dot"></div>
@@ -45,7 +44,7 @@
 
 <script>
 import { mapGetters } from "vuex";
-import HomeCard from '@/components/UI/HomeCard'
+import HomeCard from "@/components/UI/HomeCard";
 export default {
   data() {
     return {
@@ -81,7 +80,7 @@ export default {
     },
   },
   components: {
-    HomeCard
-  }
+    HomeCard,
+  },
 };
 </script>
