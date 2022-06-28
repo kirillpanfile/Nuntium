@@ -4,9 +4,10 @@ import store from "./store";
 import router from "./router";
 import "../src/assets/scss/style.scss";
 import components from "./components";
+import server from "./mirage/server";
 
 const app = createApp(App);
 components.forEach((component) => {
   app.component(component.name, component);
 });
-app.use(store).use(router).mount("#app");
+app.use(store).use(router).use(server).mount("#app");
