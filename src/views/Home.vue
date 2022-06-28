@@ -32,7 +32,6 @@
     </div>
   </div>
   <div class="flower">
-    <img src="../assets/home-flower/flower-image.png" alt="" />
     <div class="flower__block block">
       <div class="block__feature">INTERIOR</div>
       <div class="block__title">Laborum Ullamco Sunt id ut Sunt</div>
