@@ -8,15 +8,15 @@
 export default {
   name: "AppButton",
   props: {
-    scale:{
+    scale: {
       type: String,
       required: false,
-      default: '',
-      validator(val){
-        return ['','long'].includes(val)
-      }
-    }
-  }
+      default: "",
+      validator(val) {
+        return ["", "long"].includes(val);
+      },
+    },
+  },
 };
 </script>
 
@@ -25,10 +25,15 @@ export default {
   border: 2px solid #000;
   border-radius: 10px;
   padding: 11px 36px;
+  transition: all 0.2s ease-in-out;
 }
-.long{
+.long {
   border: 2px solid;
   padding: 11px 136px;
   margin-top: 15px;
+}
+.button:hover {
+  background: #000;
+  color: #fff;
 }
 </style>
