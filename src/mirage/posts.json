@@ -1,7 +1,65 @@
 [
   {
     "id": 1,
-    "name": "Nike",
-    "description": "Nike is a multinational corporation that designs, manufactures, and markets a range of sports equipment and apparel."
+    "tag": "MINIMALISM",
+    "title": "Culpa sit Laboris Exercitation ea Fugiat",
+    "description": "Incididunt occaecat et qui dolore consectetur magna. Lorem veniam ut et labore consequat ut ex sunt. Ut et nostrud aliquip do anim proident ad nulla consectetur eu aute ex anim mollit. Anim aute exercitation nisi fugiat. Dolor velit excepteur commodo proident nulla commodo ullamco labore et esse.",
+    "author": "Leslie Pena",
+    "date": "April 25, 2012",
+    "image": "assets/posts/post1.png"
+  },
+  {
+    "id": 2,
+    "tag": "TECHNOLOGY",
+    "title": "Amet non Ex Officia nulla Cupidatat",
+    "description": "Sint anim Lorem aute duis Lorem incididunt. Nulla nostrud irure id ipsum aute excepteur duis sint. Do occaecat sit dolor magna esse. Mollit incididunt cillum consectetur fugiat adipisicing dolor est id minim amet cillum esse Lorem. Deserunt non duis excepteur aliqua duis eu reprehenderit.",
+    "author": "Jacob Henry",
+    "date": "September 27, 2017",
+    "image": "assets/posts/post2.png"
+  },
+  {
+    "id": 3,
+    "tag": "ARTICLE",
+    "title": "Dolor ex Tempor Cotur Culpa li",
+    "description": "Incididunt sint nulla eu adipisicing eu reprehenderit proident consequat est. Nisi consectetur incididunt mollit officia ut cupidatat laborum proident eu velit Lorem deserunt deserunt voluptate. Proident nostrud laborum reprehenderit culpa irure id labore do ad do minim nisi. Incididunt ex.",
+    "author": "Darrell Lane",
+    "date": "May 16, 2017",
+    "image": "assets/posts/post3.png"
+  },
+  {
+    "id": 4,
+    "tag": "NATURE",
+    "title": "Tempor deserunt Sunt Qui",
+    "description": "Ea qui dolor aute cupidatat ad pariatur proident. Mollit nulla tempor aute reprehenderit ut dolore mollit nisi consequat excepteur ex officia pariatur irure.",
+    "author": "Connie Robertson",
+    "date": "November 3, 2012",
+    "image": "assets/posts/post4.png"
+  },
+  {
+    "id": 5,
+    "tag": "PLANTS",
+    "title": "Occaecat Anim eu Qui",
+    "description": "Qui ipsum consectetur ad incididunt et aliquip exercitation laboris nisi reprehenderit. Et excepteur commodo esse enim ea aliqua officia reprehenderit.",
+    "author": "Eleanor Williamson",
+    "date": "September 28, 2014",
+    "image": "assets/posts/post5.png"
+  },
+  {
+    "id": 6,
+    "tag": "FOOD",
+    "title": "Fugiat Incididunt Voluptate Consequat",
+    "description": "Mollit ea culpa ipsum pariatur eiusmod. Irure et.",
+    "author": "Bessie Watson",
+    "date": "June 13, 2012",
+    "image": "assets/posts/post6.png"
+  },
+  {
+    "id": 7,
+    "tag": "COLORFUL",
+    "title": "Occaecat Anim eu Qui",
+    "description": "Amet ipsum occaecat aliqua aute nisi laboris nostrud culpa est do. Aliqua esse velit in excepteur esse qui voluptate laboris adipisicing qui irure elit amet excepteur.",
+    "author": "Ted Simmmons",
+    "date": "June 21, 2015",
+    "image": "assets/posts/post7.png"
   }
 ]

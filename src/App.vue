@@ -6,5 +6,8 @@
 <script>
 export default {
   name: "App",
+  async mounted() {
+    let data = await fetch("/api/posts");
+  },
 };
 </script>

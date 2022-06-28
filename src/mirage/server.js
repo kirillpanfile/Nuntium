@@ -1,12 +1,15 @@
-import { Server } from "miragejs/server";
-
+import { Server } from "miragejs";
+import posts from "./posts";
 export default {
   install: () => {
     new Server({
       environment: "development",
-      seeds: true,
       seeds(server) {
-        server.createList("user", 10);
+        server.db.loadData({ posts: posts });
+      },
+      routes() {
+        this.namespace = "api";
+        this.get("/posts", (schema) => schema.db.posts);
       },
     });
   },
