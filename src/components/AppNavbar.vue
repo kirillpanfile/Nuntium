@@ -4,7 +4,7 @@
       <div class="header__logo">
         <img src="../assets/navbar/Logo.png" alt="" />
       </div>
-      <div class="header__wrapper">
+      <div class="header__wrapper" :style="{ display: menuOpen ? 'flex' : 'none' }">
         <div class="header__block">
           <ul class="header__list">
             <li class="header__link"><a href="">Home</a></li>
@@ -15,7 +15,7 @@
         <div class="header__block">
           <ul class="header__list">
             <li class="header__link">
-              <img src="../assets/icons/search.svg" alt="" />
+              <img src="../assets/icons/search.svg" class="header__search" alt="" />
             </li>
             <li class="header__link">
               <app-button>Login</app-button>
@@ -24,14 +24,7 @@
         </div>
       </div>
     </div>
-    <div
-      class="icon-menu"
-      :class="{ menuopen: menuOpen }"
-      @click="menuOpen = !menuOpen"
-    >
-      <span></span>
-      <span></span>
-      <span></span>
+    <div class="icon-menu" :class="{ menuopen: menuOpen }" @click="menuOpen = !menuOpen">
       <span></span>
     </div>
   </div>
