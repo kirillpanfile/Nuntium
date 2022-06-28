@@ -1,10 +1,11 @@
 <template>
-  <app-navbar />
-  <router-view></router-view>
+  <div>Navbar</div>
 </template>
 
 <script>
 export default {
-  name: "App",
+  name: "AppNavbar",
 };
 </script>
+
+<style></style>
