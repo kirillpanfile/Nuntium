@@ -1,22 +1,22 @@
 <template>
-  <div class="home">
+  <section class="home">
     <div class="home__block block">
       <div class="block__feature">FEATURED ARTICLE</div>
-      <div class="block__title">
+      <h1 class="block__title">
         {{ featuredPost.title }}
-      </div>
+      </h1>
       <div class="block__name">
         <p>{{ featuredPost.author }}</p>
         <div class="block__dot"></div>
         <p>{{ featuredPost.date }} (10 mins read)</p>
       </div>
-      <div class="block__text">
+      <h2 class="block__text">
         {{ sliceText }}
-      </div>
+      </h2>
     </div>
-  </div>
+  </section>
 
-  <div class="editor">
+  <section class="editor">
     <div class="editor__title">Editor's Picks</div>
     <div class="editor__wrapper">
       <home-card
@@ -30,21 +30,22 @@
         :image="item.image"
       ></home-card>
     </div>
-  </div>
-  <div class="flower">
+  </section>
+
+  <section class="flower">
     <div class="flower__block block">
-      <div class="block__feature">INTERIOR</div>
-      <div class="block__title">Laborum Ullamco Sunt id ut Sunt</div>
+      <h1 class="block__feature">INTERIOR</h1>
+      <h4 class="block__title">Laborum Ullamco Sunt id ut Sunt</h4>
       <div class="block__name">
         <p>Bessie Hawkins</p>
         <div class="block__dot"></div>
         <p>May 7, 2019 (10 mins read)</p>
       </div>
-      <div class="block__text">
+      <h2 class="block__text">
         {{ sliceText }}
-      </div>
+      </h2>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
