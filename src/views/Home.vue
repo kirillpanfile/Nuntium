@@ -18,6 +18,29 @@
   </div>
 
   <home-card></home-card>
+  <div class="editor">
+    <div class="editor__title">Editor's Picks</div>
+    <div class="editor__wrapper">
+
+    </div>
+  </div>
+  <div class="flower">
+    <img src="../assets/home-flower/flower-image.png" alt="">
+    <div class="flower__block block">
+      <div class="block__feature">INTERIOR</div>
+      <div class="block__title">
+        Laborum Ullamco Sunt id ut Sunt
+      </div>
+      <div class="block__name">
+        <p>Bessie Hawkins</p>
+        <div class="block__dot"></div>
+        <p>May 7, 2019 (10 mins read)</p>
+      </div>
+      <div class="block__text">
+        {{ sliceText }}
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
