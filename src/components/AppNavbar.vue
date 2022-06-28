@@ -22,7 +22,9 @@
               />
             </li>
             <li class="header__link">
-              <app-button>Login</app-button>
+              <router-link to="login">
+                <app-button>Login</app-button>
+              </router-link>
             </li>
           </ul>
         </div>

@@ -8,6 +8,11 @@ const routes = [
     name: "home",
     component: Home,
   },
+  {
+    path: "/login",
+    component: () => import("../views/Login"),
+    name: "login",
+  },
 ];
 
 const router = createRouter({
