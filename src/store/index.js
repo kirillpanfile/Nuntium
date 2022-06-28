@@ -6,7 +6,8 @@ export default createStore({
   },
   getters: {
     featuredPost: (state) => {
-      return state.posts.sort((a, b) => b.views - a.views).slice(0, 1);
+      //return posts with highest samount of views
+      return state.posts.sort((a, b) => b.views - a.views).slice(0, 1)[0];
     },
     featuredPosts: (state) => {
       return state.posts.sort((a, b) => b.views - a.views).slice(0, 3);
