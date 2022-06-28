@@ -1,6 +1,6 @@
 <template>
-  <app-navbar />
   <main class="app__container">
+    <app-navbar />
     <router-view></router-view>
   </main>
 </template>
