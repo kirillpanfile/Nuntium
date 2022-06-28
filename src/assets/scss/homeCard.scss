@@ -4,6 +4,10 @@
   img {
     height: 300px;
     width: 370px;
+
+    @media (max-width:$mobile) {
+      width: 100%;
+    }
   }
 
   &__wrapper {
