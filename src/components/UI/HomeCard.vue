@@ -1,6 +1,8 @@
 <template>
   <div class="card__wrapper card">
-    <img :src="require(`../../assets/posts/${image}`)" alt="Error" />
+    <div class="card__wrapper-img">
+      <img :src="require(`../../assets/posts/${image}`)" alt="Error" />
+    </div>
     <div class="card__desc desc">
       <div class="desc__tag">{{ tag }}</div>
       <div class="desc__title">{{ title }}</div>

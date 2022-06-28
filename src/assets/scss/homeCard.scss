@@ -1,24 +1,40 @@
 .card {
   font-family: "Open Sans", sans-serif;
-
-  img {
-    height: 300px;
-    width: 370px;
-
-    @media (max-width:$mobile) {
-      width: 100%;
-    }
-  }
-
+  //     width: 100%;
+  //   padding: 0 20px;
   &__wrapper {
     display: flex;
     justify-content: space-between;
     max-width: 860px;
     gap: 55px;
+    width: 100%;
+    &-img {
+      height: 300px;
+      @include adaptiveValue("min-width", 370, 320);
+      padding: 12px;
+      img {
+        object-fit: cover;
+        display: block;
+        // margin: 0 auto;
+        width: 100%;
+        max-width: 370px;
+        height: 100%;
+      }
+      @media (max-width: $mobile) {
+        height: 300px;
+      }
+    }
+    @media (max-width: $mobile) {
+      width: 100%;
+      //   padding: 0 10px;
+    }
   }
 }
 
 .desc {
+  @media (max-width: $mobile) {
+    padding: 0 20px;
+  }
   &__tag {
     color: $secondColor;
     font-size: 20px;
@@ -77,4 +93,9 @@
     flex-direction: column;
     gap: 30px;
   }
+}
+
+.person__author,
+.person__date {
+  @include adaptiveValue("font-size", 18, 14);
 }
