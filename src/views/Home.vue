@@ -1,6 +1,5 @@
 <template>
   <div class="home">
-    <img src="../assets/home-hero/hero-image.jpg" alt="" />
     <div class="home__block block">
       <div class="block__feature">FEATURED ARTICLE</div>
       <div class="block__title">

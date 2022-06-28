@@ -2,61 +2,85 @@
   margin-top: 50px;
   position: relative;
   color: $mainColor;
+  width: 100%;
+  height: 100%;
+  padding-bottom: 109px;
+  background: url("../home-hero/hero-image.jpg") 0 0 no-repeat;
+  @media (max-width: $mobile) {
+    height: 400px;
+  }
 
   img {
     width: 100%;
   }
 
   &__block {
-    position: absolute;
-    @include adaptiveValue("width", 500, 150);
-    @include adaptiveValue("height", 470, 105);
-    top: 0;
-    @include adaptiveValue("left", 65, 40);
     background-color: $white;
-    @include adaptiveValue("padding-top", 76, 5);
-    @include adaptiveValue("padding-left", 40, 5);
-    @include adaptiveValue("padding-right", 40, 5);
+    @include adaptiveValue("padding-top", 76, 14);
+    @include adaptiveValue("padding-left", 40, 14);
+    @include adaptiveValue("padding-right", 40, 14);
+    @include adaptiveValue("width", 509, 260);
+    @include adaptiveValue("height", 483, 250);
+    margin-left: 45px;
+    @media (max-width: $mobile) {
+      margin-left: 0;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
   }
 }
 
 .block {
   &__feature {
     color: $secondColor;
-    font-family: "Open Sans", sans-serif;
-    @include adaptiveValue("font-size", 16, 8);
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: 400;
+    @include adaptiveValue("font-size", 20, 16);
+    @include adaptiveValue("line-height", 27, 20);
   }
 
   &__title {
-    @include adaptiveValue("margin-top", 10, 5);
+    font-family: "Libre Baskerville";
+    font-style: normal;
     font-weight: 700;
-    @include adaptiveValue("font-size", 32, 10);
-    font-family: $fontFamily;
-    @include adaptiveValue("line-height", 41, 14);
+    font-size: 33px;
+    @include adaptiveValue("font-size", 33, 18);
+    @include adaptiveValue("line-height", 40, 28);
+    @media (max-width: $mobile) {
+      margin-top: 12px;
+    }
   }
 
   &__name {
     color: $secondColor;
     font-family: "Open Sans", sans-serif;
     display: flex;
+    gap: 10px;
+    @include adaptiveValue("font-size", 16, 12);
+    @media (max-width: $mobile) {
+      margin-top: 10px;
+    }
+
     align-items: center;
-    @include adaptiveValue("gap", 10, 5);
-    @include adaptiveValue("margin-top", 20, 5);
-    @include adaptiveValue("font-size", 16, 6);
   }
 
   &__dot {
     background-color: $secondColor;
-    @include adaptiveValue("width", 3, 2);
-    @include adaptiveValue("height", 3, 2);
     border-radius: 50%;
+    width: 3px;
+    height: 3px;
   }
 
   &__text {
-    font-family: "Open Sans", sans-serif;
-    @include adaptiveValue("margin-top", 15, 4);
-    @include adaptiveValue("font-size", 16, 7);
-    @include adaptiveValue("line-height", 24, 10);
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: 400;
+    @include adaptiveValue("font-size", 16, 14);
+    @include adaptiveValue("line-height", 24, 18);
+    margin-top: 14px;
   }
 }
 
@@ -71,15 +95,9 @@
 
   &__block {
     position: absolute;
-    @include adaptiveValue("width", 500, 150);
-    @include adaptiveValue("height", 470, 105);
     top: 0;
-    @include adaptiveValue("right", 78, 10);
-    @include adaptiveValue("top", 54, 7);
+
     background-color: $white;
-    @include adaptiveValue("padding-top", 76, 5);
-    @include adaptiveValue("padding-left", 40, 5);
-    @include adaptiveValue("padding-right", 40, 5);
   }
 }
 
