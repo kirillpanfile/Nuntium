@@ -116,3 +116,11 @@
         margin-top: 70px;
     }
 }
+
+.aside {
+    &__wrapper {
+        display: flex;
+        justify-content: center;
+        gap: 130px;
+    }
+}

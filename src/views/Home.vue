@@ -47,16 +47,63 @@
       </div>
     </div>
   </div>
+  <div class="aside">
+    <div class="aside__wrapper">
+      <div class="aside__block">
+        <tags-card
+          v-for="item in getPosts"
+          :key="item.id"
+          :tag="item.tag"
+          :title="item.title"
+          :description="item.description"
+          :author="item.author"
+          :date="item.date"
+          :image="item.image"
+        ></tags-card>
+      </div>
+      <div class="aside__block sidenav">
+        <div class="sidenav__title">tags.</div>
+        <ul class="sidenav__wrapper">
+          <li class="sidenav__tag" v-for="item in tags" :key="item">
+            {{ item }}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
 import HomeCard from "@/components/UI/HomeCard";
+import TagsCard from "@/components/UI/TagsCard";
 export default {
   data() {
     return {
       text: "Proident aliquip velit qui commodo officia qui consectetur dolor ullamco aliquip elit incididunt. Ea minim ex consectetur excepteur. Ex laborum nostrud mollit sint consectetur Lorem amet aliqua do enim. Commodo duis dolor anim excepteur. In aliquip mollit nulla consequat velit magna.",
       DefaultWidth: 0,
+      tags: [
+        "Technology",
+        "Open Source",
+        "JavaScript",
+        "Minimalism",
+        "Self-help",
+        "Animals",
+        "Herbivores",
+        "HTML",
+        "CSS",
+        "PHP",
+        "Web Technologies",
+        "Career",
+        "Life",
+        "Spirituality",
+        "Food",
+        "Cooking",
+        "Sports",
+        "Racing",
+        "Mountain Hiking",
+        "Cruising",
+      ],
     };
   },
   mounted() {
@@ -67,6 +114,7 @@ export default {
   computed: {
     ...mapGetters(["featuredPost"]),
     ...mapGetters(["featuredPosts"]),
+    ...mapGetters(["getPosts"]),
     sliceText() {
       if (this.DefaultWidth > 650) {
         this.text =
@@ -89,6 +137,7 @@ export default {
   },
   components: {
     HomeCard,
+    TagsCard,
   },
 };
 </script>

@@ -11,6 +11,9 @@ export default createStore({
     featuredPosts: (state) => {
       return state.posts.sort((a, b) => b.views - a.views).slice(0, 3);
     },
+    getPosts: (state) => {
+      return state.posts.slice(0, 4);
+    }
   },
   mutations: {
     setPosts(state, posts) {
