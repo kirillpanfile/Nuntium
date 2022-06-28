@@ -1,18 +1,18 @@
 <template>
-  <div class="card__wrapper card">
-    <div class="card__wrapper-img">
+  <div class="card">
+    <div class="card-img">
       <img :src="require(`../../assets/posts/${image}`)" alt="Error" />
     </div>
-    <div class="card__desc desc">
-      <div class="desc__tag">{{ tag }}</div>
-      <div class="desc__title">{{ title }}</div>
-      <div class="desc__person person">
-        <div class="person__author">{{ author }}</div>
-        <div class="person__circle"></div>
-        <div class="person__date">{{ date }}</div>
+    <div class="card__content">
+      <div class="card__content-tag">{{ tag }}</div>
+      <div class="card__content-title">{{ title }}</div>
+      <div class="card__content-person card-person">
+        <div class="card-person__author">{{ author }}</div>
+        <div class="card-person__circle"></div>
+        <div class="card-person__date">{{ date }}</div>
         <!-- 3 mins read -->
       </div>
-      <div class="desc__description">{{ description }}</div>
+      <div class="card__content-description">{{ description }}</div>
     </div>
   </div>
 </template>
