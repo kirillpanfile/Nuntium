@@ -16,6 +16,8 @@
       </div>
     </div>
   </div>
+
+  <home-card></home-card>
   <div class="editor">
     <div class="editor__title">Editor's Picks</div>
     <div class="editor__wrapper">
@@ -43,6 +45,7 @@
 
 <script>
 import { mapGetters } from "vuex";
+import HomeCard from '@/components/UI/HomeCard'
 export default {
   data() {
     return {
@@ -77,5 +80,8 @@ export default {
       }
     },
   },
+  components: {
+    HomeCard
+  }
 };
 </script>
