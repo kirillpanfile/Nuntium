@@ -17,6 +17,11 @@ const routes = [
     path: "/screenlock",
     component: () => import("../views/ScreenLock"),
     name: "screenlock"
+  },
+  {
+    path: "/tags",
+    component: () => import("../views/Tags"),
+    name: "tags"
   }
 ];
 

@@ -16,7 +16,7 @@
         <div class="header__block">
           <ul class="header__list">
             <li class="header__link"><a href="">Home</a></li>
-            <li class="header__link"><a href="">Tags</a></li>
+            <li class="header__link"><router-link to="tags">Tags</router-link></li>
             <li class="header__link"><a href="">About</a></li>
           </ul>
         </div>
