@@ -113,7 +113,7 @@ export default {
         "Food",
         "Sports",
       ],
-      currentTag: "Web Technologies",
+      currentTag: "FOOD",
     };
   },
   components: {
@@ -121,12 +121,11 @@ export default {
     HomeTagCard,
   },
   mounted() {
-    console.log(this.$store.state.tagPosts.length);
-    if (!this.$store.state.tagPosts.length)
-      this.$store.dispatch("getItemsByTag", this.currentTag.toUpperCase());
     window.addEventListener("resize", () => {
       this.DefaultWidth = window.innerWidth;
     });
+    if (!this.$store.state.tagPosts.length)
+      this.$store.dispatch("getItemsByTag", "FOOD");
   },
   watch: {
     currentTag(newTag) {
