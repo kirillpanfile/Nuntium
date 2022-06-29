@@ -188,11 +188,19 @@
     }
   }
 
-  &__select{
-    margin-bottom:20px; 
+  &__select {
+    margin-bottom: 20px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: none;
+    color: $mainColor;
     font-size: 16px;
     padding: 5px;
-    @include adaptiveValue("min-width",237, 160)
+    border: 1px solid $mainColor;
+    @include adaptiveValue("min-width", 237, 160);
+    background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png)
+      no-repeat right 6px top 6px;
   }
 }
 .tags-list-title {
