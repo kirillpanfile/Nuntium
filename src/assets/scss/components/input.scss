@@ -26,3 +26,10 @@
         outline: none;
     }
 }
+
+
+@media (max-width:400px){
+    .input__wrapper{
+        width: 270px;
+    }
+}
