@@ -8,7 +8,11 @@
           alt=""
         />
       </div>
-      <div class="header__wrapper" :class="{ active: menuOpen }">
+      <div
+        v-if="!isScreenLock"
+        class="header__wrapper"
+        :class="{ active: menuOpen }"
+      >
         <div class="header__block">
           <ul class="header__list">
             <li class="header__link"><a href="">Home</a></li>
@@ -53,6 +57,11 @@ export default {
     return {
       menuOpen: false,
     };
+  },
+  computed: {
+    isScreenLock() {
+      return this.$route.path.includes("/screenlock");
+    },
   },
 };
 </script>

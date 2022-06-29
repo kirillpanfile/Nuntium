@@ -48,21 +48,25 @@
   </section>
 
   <section class="tags">
-    <select class="tags__select" v-if="isMobile">
-      <option v-for="item in tags" :value="item.tag">{{ item }}</option>
+    <select v-model="currentTag" class="tags__select" v-if="isMobile">
+      <option v-for="item in tags" :value="item">
+        {{ item }}
+      </option>
     </select>
     <div class="tags__wrapper">
       <div class="tags__wrapper-content tags-content">
-        <HomeTagCard
-          v-for="(item, index) in featuredPosts"
-          :key="index"
-          :title="item.title"
-          :description="item.description"
-          :author="item.author"
-          :date="item.date"
-          :image="item.image"
-          :tag="item.tag"
-        />
+        <transition-group name="list">
+          <HomeTagCard
+            v-for="item in tagPosts"
+            :key="item.id"
+            :title="item.title"
+            :description="item.description"
+            :author="item.author"
+            :date="item.date"
+            :image="item.image"
+            :tag="item.tag"
+          />
+        </transition-group>
       </div>
       <div class="tags__wrapper-list tags-list" v-if="!isMobile">
         <h1 class="tags-list-title">tags.</h1>
@@ -71,6 +75,7 @@
             class="tags-list-item"
             v-for="(item, index) in tags"
             :key="index"
+            @click="currentTag = item"
           >
             {{ item }}
           </button>
@@ -91,26 +96,17 @@ export default {
       tags: [
         "Technology",
         "Open Source",
-        "JavaScript",
         "Minimalism",
         "Self-help",
         "Animals",
-        "Herbivores",
-        "HTML",
-        "CSS",
-        "PHP",
+        "Nature",
         "Web Technologies",
         "Career",
         "Life",
-        "Spirituality",
         "Food",
-        "Cooking",
         "Sports",
-        "Racing",
-        "Mountain Hiking",
-        "Cruising",
       ],
-      isMobile: this.isMobile,
+      currentTag: "Food",
     };
   },
   components: {
@@ -118,13 +114,22 @@ export default {
     HomeTagCard,
   },
   mounted() {
+    console.log(this.$store.state.tagPosts.length);
+    if (!this.$store.state.tagPosts.length)
+      this.$store.dispatch("getItemsByTag", this.currentTag.toUpperCase());
     window.addEventListener("resize", () => {
       this.DefaultWidth = window.innerWidth;
     });
   },
+  watch: {
+    currentTag(newTag) {
+      this.$store.dispatch("getItemsByTag", newTag.toUpperCase());
+    },
+  },
   computed: {
     ...mapGetters(["featuredPost"]),
     ...mapGetters(["featuredPosts"]),
+    ...mapGetters(["tagPosts"]),
     sliceText() {
       return (
         this.featuredPost.description.slice(0, this.DefaultWidth / 4) + "..."
@@ -136,3 +141,18 @@ export default {
   },
 };
 </script>
+
+<style>
+.list-move,
+.list-enter-active,
+.list-leave-active {
+  transition: all 0.5s ease;
+}
+.list-enter-from,
+.list-leave-to {
+  opacity: 0;
+  transition: all 0.5s ease;
+
+  transform: translateX(60px);
+}
+</style>

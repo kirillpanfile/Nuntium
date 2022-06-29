@@ -3,6 +3,7 @@ import { createStore } from "vuex";
 export default createStore({
   state: {
     posts: [],
+    tagPosts: [],
   },
   getters: {
     featuredPost: (state) => {
@@ -12,10 +13,17 @@ export default createStore({
     featuredPosts: (state) => {
       return state.posts.sort((a, b) => 0.5 - Math.random()).slice(0, 4);
     },
+    tagPosts: (state) => {
+      return state.tagPosts;
+    },
   },
   mutations: {
     setPosts(state, posts) {
       state.posts = posts;
+    },
+    setTagPosts(state, posts) {
+      state.tagPosts = [];
+      state.tagPosts = posts;
     },
   },
   actions: {
@@ -23,6 +31,12 @@ export default createStore({
       const response = await fetch("api/posts");
       const posts = await response.json();
       commit("setPosts", posts);
+    },
+    getItemsByTag({ commit }, tag) {
+      commit(
+        "setTagPosts",
+        this.state.posts.filter((post) => post.tag == tag)
+      );
     },
   },
   modules: {},
