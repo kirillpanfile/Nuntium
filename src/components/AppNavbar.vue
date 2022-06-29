@@ -1,50 +1,49 @@
 <template>
   <header class="header">
-    <div class="header__navbar">
-      <div class="header__logo">
-        <img
-          @click="$router.push('/')"
-          src="../assets/navbar/Logo.png"
-          alt=""
-        />
+    <div class="header__wrapper">
+      <div class="header__wrapper-logo">
+        <router-link to="/">
+          <img src="../assets/navbar/Logo.png" alt="" />
+        </router-link>
       </div>
       <div
+        class="header__wrapper-block header-block"
         v-if="!isScreenLock"
-        class="header__wrapper"
-        :class="{ active: menuOpen }"
+        :class="{ 'header__wrapper-mobile': menuOpen }"
       >
-        <div class="header__block">
-          <ul class="header__list">
-            <li class="header__link"><a href="">Home</a></li>
-            <li class="header__link"><router-link to="tags">Tags</router-link></li>
-            <li class="header__link"><a href="">About</a></li>
-          </ul>
-        </div>
-        <div class="header__block">
-          <ul class="header__list">
-            <li class="header__link">
-              <img
-                src="../assets/icons/search.svg"
-                class="header__search"
-                alt=""
-              />
-            </li>
-            <li class="header__link">
-              <router-link to="login">
-                <app-button>Login</app-button>
-              </router-link>
-            </li>
-          </ul>
-        </div>
+        <ul class="header-block__nav header-nav">
+          <li class="header-block__link-x" @click="menuOpen = false">✖</li>
+          <li class="header-block__link">
+            <router-link to="/">Home</router-link>
+          </li>
+          <li class="header-block__link">
+            <router-link to="/tags">Tags</router-link>
+          </li>
+          <li class="header-block__link">
+            <router-link to="/about">About</router-link>
+          </li>
+        </ul>
+        <nav class="header-block__user">
+          <form action="" class="search__form">
+            <img src="../assets/icons/search.svg" alt="" />
+            <input type="search" required />
+          </form>
+          <router-link to="/login">
+            <app-button>Login</app-button>
+          </router-link>
+        </nav>
+      </div>
+      <div
+        class="icon-menu"
+        @click="menuOpen = !menuOpen"
+        :class="{ menuopen: menuOpen }"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
       </div>
     </div>
-    <div
-      class="icon-menu"
-      :class="{ menuopen: menuOpen }"
-      @click="menuOpen = !menuOpen"
-    >
-      <span></span>
-    </div>
+    <div v-if="menuOpen" class="overlay" @click="menuOpen = false"></div>
   </header>
 </template>
 
@@ -57,6 +56,11 @@ export default {
     return {
       menuOpen: false,
     };
+  },
+  watch: {
+    menuOpen() {
+      document.body.style.overflow = this.menuOpen ? "hidden" : "auto";
+    },
   },
   computed: {
     isScreenLock() {
