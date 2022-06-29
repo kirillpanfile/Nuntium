@@ -54,7 +54,10 @@
       </option>
     </select>
     <div class="tags__wrapper">
-      <div class="tags__wrapper-content tags-content" :class="tagPosts.length === 0 ? 'flex-center' : ''">
+      <div
+        class="tags__wrapper-content tags-content"
+        :class="tagPosts.length === 0 ? 'flex-center' : ''"
+      >
         <transition-group v-if="tagPosts.length !== 0" name="list">
           <HomeTagCard
             v-for="item in tagPosts"
@@ -67,7 +70,8 @@
             :tag="item.tag"
           />
         </transition-group>
-        <div v-else class="tags__empty">There are no card with tag: 
+        <div v-else class="tags__empty">
+          There are no card with tag:
           <strong>{{ currentTag }}</strong>
         </div>
       </div>
@@ -109,7 +113,7 @@ export default {
         "Food",
         "Sports",
       ],
-      currentTag: "Web Technologies",
+      currentTag: "FOOD",
     };
   },
   components: {
@@ -117,12 +121,11 @@ export default {
     HomeTagCard,
   },
   mounted() {
-    console.log(this.$store.state.tagPosts.length);
-    if (!this.$store.state.tagPosts.length)
-      this.$store.dispatch("getItemsByTag", this.currentTag.toUpperCase());
     window.addEventListener("resize", () => {
       this.DefaultWidth = window.innerWidth;
     });
+    if (!this.$store.state.tagPosts.length)
+      this.$store.dispatch("getItemsByTag", "FOOD");
   },
   watch: {
     currentTag(newTag) {

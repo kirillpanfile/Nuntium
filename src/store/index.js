@@ -35,7 +35,7 @@ export default createStore({
     getItemsByTag({ commit }, tag) {
       commit(
         "setTagPosts",
-        this.state.posts.filter((post) => post.tag == tag)
+        this.state.posts.filter((post) => post.tag.includes(tag))
       );
     },
   },
