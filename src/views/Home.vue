@@ -54,7 +54,10 @@
       </option>
     </select>
     <div class="tags__wrapper">
-      <div class="tags__wrapper-content tags-content" :class="tagPosts.length === 0 ? 'flex-center' : ''">
+      <div
+        class="tags__wrapper-content tags-content"
+        :class="tagPosts.length === 0 ? 'flex-center' : ''"
+      >
         <transition-group v-if="tagPosts.length !== 0" name="list">
           <HomeTagCard
             v-for="item in tagPosts"
@@ -67,7 +70,8 @@
             :tag="item.tag"
           />
         </transition-group>
-        <div v-else class="tags__empty">There are no card with tag: 
+        <div v-else class="tags__empty">
+          There are no card with tag:
           <strong>{{ currentTag }}</strong>
         </div>
       </div>
