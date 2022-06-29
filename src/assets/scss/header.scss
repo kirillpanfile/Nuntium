@@ -41,11 +41,6 @@
     }
   }
 
-  // .header__block
-
-  &__block {
-  }
-
   // .header__list
 
   &__list {
@@ -133,10 +128,6 @@
 .menuopen {
   > span {
     width: 0;
-  }
-
-  &::before,
-  &::after {
   }
 
   &::before {

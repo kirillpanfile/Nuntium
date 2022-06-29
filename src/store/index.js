@@ -10,7 +10,7 @@ export default createStore({
       return state.posts.sort((a, b) => b.views - a.views).slice(0, 1)[0];
     },
     featuredPosts: (state) => {
-      return state.posts.sort((a, b) => b.views - a.views).slice(0, 3);
+      return state.posts.sort((a, b) => 0.5 - Math.random()).slice(0, 4);
     },
   },
   mutations: {

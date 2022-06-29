@@ -2,7 +2,11 @@
   <header class="header">
     <div class="header__navbar">
       <div class="header__logo">
-        <img src="../assets/navbar/Logo.png" alt="" />
+        <img
+          @click="$router.push('/')"
+          src="../assets/navbar/Logo.png"
+          alt=""
+        />
       </div>
       <div class="header__wrapper" :class="{ active: menuOpen }">
         <div class="header__block">
