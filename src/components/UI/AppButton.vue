@@ -36,4 +36,11 @@ export default {
   background: #000;
   color: #fff;
 }
+
+
+@media (max-width:400px){
+  .long{
+    padding: 11px 109px;
+  }
+}
 </style>
