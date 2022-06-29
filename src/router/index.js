@@ -13,6 +13,11 @@ const routes = [
     component: () => import("../views/Login"),
     name: "login",
   },
+  {
+    path: "/screenlock",
+    component: () => import("../views/ScreenLock"),
+    name: "screenlock"
+  }
 ];
 
 const router = createRouter({

@@ -6,7 +6,7 @@
         <login-input :placeholder="'Password'" :type="'password'"></login-input>
         <div class="login__options">
             <div class="flex"> <!-- )), altfel nu stiam cum -->
-                <input type="checkbox" id="remember">
+                <input type="checkbox" name="remember" id="remember">
                 <label for="remember">Remember me</label>
             </div>
             <a href="#" class="login__forgot">Forgot Password?</a>
@@ -14,7 +14,7 @@
         <app-button :scale="'long'">Login</app-button>
     </div>
 
-    <a href="#" class="screenlock">See screenlock page</a>
+    <router-link to="/screenlock" class="screenlock">See screenlock page</router-link>
 </template>
 
 <script>
