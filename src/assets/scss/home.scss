@@ -202,6 +202,12 @@
     background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png)
       no-repeat right 6px top 6px;
   }
+
+  &__empty{ //EMPTY
+    font-size: 20px;
+    font-family: "Open Sans";
+    text-align: center;
+  }
 }
 .tags-list-title {
   font-family: "Open Sans";
@@ -221,6 +227,10 @@
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
+}
+
+.flex-center{
+  justify-content: center;
 }
 
 // ====================================================================================================
