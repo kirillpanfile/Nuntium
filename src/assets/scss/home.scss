@@ -187,6 +187,13 @@
       display: none;
     }
   }
+
+  &__select{
+    margin-bottom:20px; 
+    font-size: 16px;
+    padding: 5px;
+    @include adaptiveValue("min-width",237, 160)
+  }
 }
 .tags-list-title {
   font-family: "Open Sans";

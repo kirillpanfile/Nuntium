@@ -48,7 +48,7 @@
   </section>
 
   <section class="tags">
-    <select v-if="isMobile">
+    <select class="tags__select" v-if="isMobile">
       <option v-for="item in tags" :value="item.tag">{{ item }}</option>
     </select>
     <div class="tags__wrapper">
