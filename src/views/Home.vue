@@ -3,32 +3,30 @@
     <div class="home__block block">
       <div class="block__feature">FEATURED ARTICLE</div>
       <h1 class="block__title">
-        <!-- {{ featuredPost.title }} -->
+        {{ featuredPost.title }}
       </h1>
       <div class="block__name">
-        <!-- <p>{{ featuredPost.author }}</p> -->
+        <p>{{ featuredPost.username }}</p>
         <div class="block__dot"></div>
-        <!-- <p>{{ featuredPost.date }} (10 mins read)</p>  -->
+        <p>{{ currentTime }}</p>
       </div>
       <h2 class="block__text">
-        <!-- {{ sliceText }} -->
+        {{ sliceText }}
       </h2>
     </div>
   </section>
-
   <section class="editor">
     <div class="editor__title">Editor's Picks</div>
     <div class="editor__wrapper">
-      <!-- <home-card
+      <home-card
         v-for="item in featuredPosts"
         :key="item.id"
-        :tag="item.tag"
         :title="item.title"
-        :description="item.description"
-        :author="item.author"
-        :date="item.date"
-        :image="item.image"
-      ></home-card> -->
+        :description="item.desc"
+        :author="item.username"
+        :date="item.createdAt"
+        :image="item.photo"
+      ></home-card>
     </div>
   </section>
 
@@ -42,7 +40,7 @@
         <p>May 7, 2019 (10 mins read)</p>
       </div>
       <h2 class="block__text">
-        <!-- {{ sliceText }} -->
+        {{ sliceText }}
       </h2>
     </div>
   </section>
@@ -93,9 +91,42 @@
 </template>
 
 <script>
-// import { mapGetters } from "vuex";
-// import HomeCard from "@/components/UI/HomeCard";
-// import HomeTagCard from "@/components/UI/HomeTagCard";
+import HomeCard from "@/components/UI/HomeCard";
+import HomeTagCard from "@/components/UI/HomeTagCard";
+import { mapGetters, mapState } from "vuex";
+export default {
+  data() {
+    return {
+      DefaultWidth: window.innerWidth,
+    };
+  },
+  components: {
+    HomeCard,
+    HomeTagCard,
+  },
+  mounted() {
+    window.addEventListener("resize", () => {
+      this.DefaultWidth = window.innerWidth;
+    });
+    this.$store.dispatch("fetchTags");
+  },
+  computed: {
+    ...mapGetters(["featuredPost"]),
+    ...mapGetters(["featuredPosts"]),
+    ...mapState(["allTags"]),
+    currentTime() {
+      let created = [...this.featuredPost.createdAt];
+      created.length = 10;
+      return created.join("");
+    },
+    sliceText() {
+      return this.featuredPost.desc.slice(0, this.DefaultWidth / 4) + "...";
+    },
+    isMobile() {
+      return this.DefaultWidth < 768;
+    },
+  },
+};
 // export default {
 //   data() {
 //     return {
