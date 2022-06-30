@@ -1,123 +1,130 @@
+.hero{
+    @include adaptiveValue ("margin-top",200,100);
+    margin: 0 auto;
+    &__image{
+        margin: 0 auto;
+        max-width: 251px;
+        max-height: 78px;
+        img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+    &__text{
+        text-align: center;
+        margin: 26px auto 0 auto;
+        max-width: 370px;
+        @include adaptiveValue("font-size",20,14);
+        line-height: 30px;
+    }
+}
+
 .about{
     &__wrapper{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        margin-top: 200px;
+        @include adaptiveValue("padding-left",30,0);
+        @include adaptiveValue("padding-right",30,0);
     }
-    &__logo{
-        height: 78px;
-        img{
-            height: 100%;
-        }
-    }
-    &__desc{
-        max-width: 370px;
-        line-height: 30px;
-        font-size: 20px;
-        text-align: center;
-        margin-top: 30px;
-    }
-    &__margins{
-        margin-top: 300px;
-    }
-
     &__block{
         background-color: #1C1C1C;
-        width: calc(100% - 100px);
-        margin: 200px auto 0 auto;
+        @include adaptiveValue("padding-top",150,40);
+        @include adaptiveValue("padding-bottom",140,80);
+        width: 100%;
         position: relative;
-        display: flex;
-        flex-direction: column;
-        align-items:center;
+        isolation: isolate;
         color: #fff;
-        h3 {
-            font-size: 42px;
-            line-height: 52px;
-        }
-        p{
-            font-family: "Open Sans"
-        }
         &:after{
             content:'';
             position: absolute;
+            z-index: -1;
             width: 8px;
             height: 1016px;
             background-color: #fff;
             top: 0%;
-            @include adaptiveValue("right",200,0);
+            @include adaptiveValue("right",200,20);
+            @media (max-width: $tablet){
+                display: none;
+            }
         }
         &:before{
-            content:'';
+            content: '';
             position: absolute;
+            z-index: -1;
             width: 8px;
             height: 1452px;
             background-color: #fff;
             bottom: 0%;
-            @include adaptiveValue("left",160,0)
+            @include adaptiveValue("left",200,20);
+            @media (max-width: $tablet){
+                display: none;
+            }
         }
-    }
-
-    &__wrapper {
-        padding: 0 100px;
-    }
-
-    &__doamna{
-        display: flex;
-        flex-direction: column;
-    }
-
-    &__colaj{
-        display: flex;
-        align-items: center;
-        gap: 20px;
-        max-height: 350px;
     }
 }
 
-.angel {
-    z-index: 2;
-    margin-top: 150px;
+.angel{
     display: flex;
-    gap: 60px;
-    &__block {
-        
-        h3 {
-            margin: 30px 0px 0px 0px;
-            max-width: 444px;
-        }
-        p {
-            max-width: 436px;
-            margin-top: 30px;
-            line-height: 24px;
-        }
+    justify-content: center;
+    @include adaptiveValue("gap",60,20);
+    @media (max-width: $tablet){
+        flex-direction: column;
+        align-items: center;
     }
-}
-
-.human {
-    display: block;
-    margin: 225px auto 0 auto;
-    text-align: center;
-    width: max-content;
-    &__title {
+    &__desc{
+        max-width: 450px;
+        padding:0 20px
+    }
+    &__title{
+        margin-top: 20px;
         font-size: 42px;
         line-height: 52px;
-        max-width: 427px;
+        @media (max-width: $mobile){
+            @include adaptiveValue("font-size",42,24);
+            @include adaptiveValue("line-height",52,32);
+        }
     }
-    &__descr {
-        font-family: Open sans;
+    &__text{
+        font-family: "Open Sans";
+        max-width: 430px;
+        font-size: 16px;
         line-height: 24px;
-        max-width: 434px;
-        margin-top: 35px;
+        margin-top: 20px;
+        @media (max-width: $mobile){
+            @include adaptiveValue("font-size",16,14);
+            @include adaptiveValue("line-height",24,20);
+        }
+    }
+    &__image{
+        max-width: 569px;
+        max-height: 419px;
+        padding: 0 20px;
+        img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
     }
 }
 
-.doamna{
-    z-index: 2;
-    margin-top: -100px;
-    margin-right: 40px;
+.woman{
+    margin: 0px auto;
+    @include adaptiveValue("margin-top",-100,-20);
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    @media (max-width: 1200px){
+        margin-top: 50px;
+    }
+    @media (max-width: $tablet){
+        margin: 50px auto;
+        flex-direction: column-reverse
+    }
     &__image{
-        max-width: 557px;
-        max-height: 391px;
+        margin: 0 auto;
+        max-width: 569px;
+        max-height: 419px;
+        padding: 0 20px;
         img{
             width: 100%;
             height: 100%;
@@ -125,78 +132,156 @@
         }
     }
     &__desc{
-        h3{
-            margin-top: 30px;
-            max-width: 524px;
-        }
-        p{
-            margin-top: 30px;
-            max-width: 524px;
-            line-height: 24px;
+        padding: 0 20px;
+        margin: 0 auto;
+        max-width: 450px;
+    }
+    &__title{
+        margin-top: 20px;
+        font-size: 42px;
+        line-height: 52px;
+        @media (max-width: $mobile){
+            @include adaptiveValue("font-size",42,24);
+            @include adaptiveValue("line-height",52,32);
         }
     }
-}
-
-.share {
-    z-index: 2;
-    margin-top: 200px;
-    h3 {
-        max-width: 612px;
-    }
-    p {
-        max-width: 566px;
-        margin-top: 25px;
+    &__text{
+        font-family: "Open Sans";
+        max-width: 430px;
+        font-size: 16px;
         line-height: 24px;
+        margin-top: 20px;
+        @media (max-width: $mobile){
+            @include adaptiveValue("font-size",16,14);
+            @include adaptiveValue("line-height",24,20);
+        }
     }
 }
 
+.share{
+    margin: 0 auto;
+    margin-top: 207px;
+    max-width: 612px;
+    padding: 0 20px;
+    @media (max-width: $tablet){
+        margin-top: 107px
+    }
+    @media (max-width: $mobile){
+        margin-top: 57px;
+    }
+    &__title{
+        max-width: 612px;
+        margin-top: 20px;
+        font-size: 42px;
+        line-height: 52px;
+        @media (max-width: $mobile){
+            @include adaptiveValue("font-size",42,24);
+            @include adaptiveValue("line-height",52,32);
+        }
+    }
+    &__text{
+        font-family: "Open Sans";
+        max-width: 566px;
+        font-size: 16px;
+        line-height: 24px;
+        margin-top: 20px;
+        @media (max-width: $mobile){
+            @include adaptiveValue("font-size",16,14);
+            @include adaptiveValue("line-height",24,20);
+        }
+    }
+}
 
-.colaj{
-    z-index: 2;
-    width: 100%;
-    margin-top: 30px;
+.carousel{
+    margin-top: 76px;
+    display: flex;
     direction: rtl;
-    margin-bottom: 140px;
-    &__image{
-        max-width: 350px;
+    gap: 20px;
+    @media (max-width: $mobile){  
+        flex-direction: column;
+        margin: 0 auto;
+        margin-top: 40px;
+        padding: 0 20px;
+   }
+   &__image{
+    max-width: 350px;
+    max-height: 350px;
+    @media (max-width: $mobile){
+        margin: 0 auto;
     }
     img{
         width: 100%;
-        @include adaptiveValue("height",350,100);
+        height: 100%;
+        max-height: 350px;
         object-fit: cover;
+    }
+   }
+}
+
+.humans{
+    color: $mainColor;
+    text-align: center;
+    padding: 233px 0;
+    @media (max-width: $tablet){
+        padding: 165px 0;
+    }
+    @media (max-width: $mobile){
+        padding: 80px 0;
+    }
+    &__title{
+        margin: 0 auto;
+        font-size: 42px;
+        line-height: 52px;
+        max-width: 427px;
+        @media (max-width: $mobile){
+            font-size: 26px;
+            line-height: 42px;
+        }
+    }
+    &__text{
+        margin: 0 auto;
+        font-family: "Open Sans";
+        font-size: 16px;
+        line-height: 24px;
+        max-width: 434px;
+        margin-top: 35px;
+        @media (max-width: $mobile){
+            font-size: 14px;
+            line-height: 20px;
+        }
     }
 }
 
 .footer{
     background-color: #1C1C1C;
-    width: calc(100% - 100px);
-    height: 425px;
-    margin: 0 auto;
-    padding: 120px 100px;
-    color: #FFF;
-    text-align: center;
-    margin-top: 240px;
-    @media (max-width: $mobile) {
-        padding: 120px 0;
-    }
-
+    color: #fff;
+    width: 100%;
+    padding: 120px 0; 
     &__title{
-        @include adaptiveValue("font-size", 33, 24);
-        
+        text-align: center;
+        font-size: 33px;
+        @media (max-width: $mobile){
+            font-size: 27px;
+        }
     }
-    &__desc{
-        font-family: "Open Sans";
-        @include adaptiveValue("font-size", 16, 14);
+    &__text{
+        text-align: center;
+        margin-top: 20px;
+        font-size: 16px;
         max-width: 332px;
-        margin:20px auto;
+        margin: 0 auto;
+        margin-top: 20px;
+        line-height: 24px;
+        font-family: "Open Sans";
+        @media (max-width: $mobile){
+            font-size: 14px;
+            padding: 0 20px;
+        }
     }
     &__socials{
-        margin-top: 30px;
         display: flex;
-        gap: 15px;
+        gap: 20px;
         justify-content: center;
-        img{
-            cursor: pointer;
-        }
+        margin-top: 30px;
     }
 }
