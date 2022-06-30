@@ -10,10 +10,10 @@ export default {
   name: "App",
   data() {
     return {
-      loaded: false,
+      loaded: true,
     };
   },
-  mounted() {
+  async mounted() {
     this.$store.dispatch("fetchPosts").then(() => {
       this.loaded = true;
     });

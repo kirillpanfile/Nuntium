@@ -1,42 +1,21 @@
 import { createStore } from "vuex";
-
+const API_URI = "http://localhost:5000";
+const API_POSTS = "/api/posts";
 export default createStore({
   state: {
-    posts: [],
-    tagPosts: [],
+    allPosts: [],
   },
-  getters: {
-    featuredPost: (state) => {
-      //return posts with highest samount of views
-      return state.posts.sort((a, b) => b.views - a.views).slice(0, 1)[0];
-    },
-    featuredPosts: (state) => {
-      return state.posts.sort(() => 0.5 - Math.random()).slice(0, 4);
-    },
-    tagPosts: (state) => {
-      return state.tagPosts;
-    },
-  },
+  getters: {},
   mutations: {
-    setPosts(state, posts) {
-      state.posts = posts;
-    },
-    setTagPosts(state, posts) {
-      state.tagPosts = [];
-      state.tagPosts = posts;
+    setAllPosts(state, posts) {
+      state.allPosts = posts;
     },
   },
   actions: {
     async fetchPosts({ commit }) {
-      const response = await fetch("api/posts");
+      const response = await fetch(`http://localhost:5000/api/posts`);
       const posts = await response.json();
-      commit("setPosts", posts);
-    },
-    getItemsByTag({ commit }, tag) {
-      commit(
-        "setTagPosts",
-        this.state.posts.filter((post) => post.tag.includes(tag))
-      );
+      commit("setAllPosts", posts);
     },
   },
   modules: {},
