@@ -1,5 +1,5 @@
 <template>
-  <section class="home">
+  <!-- <section class="home">
     <div class="home__block block">
       <div class="block__feature">FEATURED ARTICLE</div>
       <h1 class="block__title">
@@ -89,7 +89,7 @@
         </div>
       </div>
     </div>
-  </section>
+  </section> -->
 </template>
 
 <script>
@@ -127,24 +127,24 @@ export default {
     if (!this.$store.state.tagPosts.length)
       this.$store.dispatch("getItemsByTag", "FOOD");
   },
-  watch: {
-    currentTag(newTag) {
-      this.$store.dispatch("getItemsByTag", newTag.toUpperCase());
-    },
-  },
-  computed: {
-    ...mapGetters(["featuredPost"]),
-    ...mapGetters(["featuredPosts"]),
-    ...mapGetters(["tagPosts"]),
-    sliceText() {
-      return (
-        this.featuredPost.description.slice(0, this.DefaultWidth / 4) + "..."
-      );
-    },
-    isMobile() {
-      return this.DefaultWidth < 991;
-    },
-  },
+  // watch: {
+  //   currentTag(newTag) {
+  //     this.$store.dispatch("getItemsByTag", newTag.toUpperCase());
+  //   },
+  // },
+  // computed: {
+  //   ...mapGetters(["featuredPost"]),
+  //   ...mapGetters(["featuredPosts"]),
+  //   ...mapGetters(["tagPosts"]),
+  //   sliceText() {
+  //     return (
+  //       this.featuredPost.description.slice(0, this.DefaultWidth / 4) + "..."
+  //     );
+  //   },
+  //   isMobile() {
+  //     return this.DefaultWidth < 991;
+  //   },
+  // },
 };
 </script>
 
