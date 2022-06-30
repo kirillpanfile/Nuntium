@@ -16,18 +16,23 @@ const routes = [
   {
     path: "/screenlock",
     component: () => import("../views/ScreenLock"),
-    name: "screenlock"
+    name: "screenlock",
   },
   {
     path: "/tags",
     component: () => import("../views/Tags"),
-    name: "tags"
+    name: "tags",
   },
   {
     path: "/about",
     component: () => import("../views/About"),
-    name: "about"
-  }
+    name: "about",
+  },
+  {
+    path: "/:catchAll(.*)",
+    component: () => import("../views/404"),
+    name: "404",
+  },
 ];
 
 const router = createRouter({
