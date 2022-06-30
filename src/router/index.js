@@ -22,6 +22,11 @@ const routes = [
     path: "/tags",
     component: () => import("../views/Tags"),
     name: "tags"
+  },
+  {
+    path: "/profile",
+    component: () => import("../views/Profile"),
+    name: "profile"
   }
 ];
 

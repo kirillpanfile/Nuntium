@@ -1,0 +1,96 @@
+.profile {
+    margin-top: 150px;
+
+    &__wrapper {
+        display: flex;
+        gap: 75px;
+        width: max-content;
+        margin: 0 auto;
+    }
+
+    &__info {
+        font-family: Open sans;
+    }
+
+    &__user {
+        font-family: Libre Baskerville;
+        font-size: 42px;
+        font-weight: 700;
+
+        &-tag {
+            color: $secondColor;
+        }
+    }
+
+    &__descr {
+        margin-top: 10px;
+        line-height: 22px;
+        max-width: 445px;
+    }
+
+    &__links {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 13px;
+    }
+
+    &__block {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    &__website {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+}
+
+.interior {
+    margin-top: 115px;
+    background: url('../profile/Article-background.jpg') center center/cover no-repeat;
+    height: 450px;
+    display: flex;
+    justify-content: flex-end;
+
+    &__block {
+        padding: 44px 32px;
+        background-color: $white;
+        @include adaptiveValue("padding-top", 44, 14);
+        @include adaptiveValue("padding-left", 32, 14);
+        @include adaptiveValue("padding-right", 32, 14);
+        @include adaptiveValue("padding-bottom", 44, 14);
+        @include adaptiveValue("width", 403, 260);
+        @include adaptiveValue("height", 393, 250);
+        margin: 28px 35px 0px 0px;
+
+        &-feature {
+            color: $secondColor;
+            font-family: Open sans;
+            font-size: 20px;
+        }
+
+        &-title {
+            margin-top: 5px;
+            font-size: 33px;
+            font-weight: 700;
+            line-height: 41px;
+        }
+
+        &-name {
+            color: $secondColor;
+            font-family: Open sans;
+
+            span {
+                font-size: 14px;
+            }
+        }
+
+        &-text {
+            margin-top: 15px;
+            line-height: 24px;
+        }
+    }
+}

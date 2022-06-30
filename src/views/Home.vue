@@ -16,6 +16,10 @@
     </div>
   </section>
 
+  <router-link to="/profile">
+    <button>profile</button>
+  </router-link>
+
   <section class="editor">
     <div class="editor__title">Editor's Picks</div>
     <div class="editor__wrapper">
