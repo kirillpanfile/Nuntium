@@ -63,7 +63,7 @@ export default {
         email: this.email,
         password: this.password,
       };
-      console.log(createUser);
+      this.$store.dispatch("createUser", createUser);
     },
   },
 
