@@ -15,7 +15,7 @@ export default createStore({
     tagPosts: (state) => {
       return state.allPosts.filter((post) =>
         post.categories.some((cat) => {
-          return cat.includes(state.tag);
+          return cat.toLowerCase().includes(state.tag.toLowerCase());
         })
       );
     },
