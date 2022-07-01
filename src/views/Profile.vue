@@ -20,7 +20,7 @@
           </div>
           <div class="profile__block">
             <a href="" class="profile__link"
-              ><img src="../assets/icons/linkedin.svg" alt="linkedIn"
+              ><img src="../assets/icons/linkedIn.svg" alt="linkedIn"
             /></a>
             <a href="" class="profile__link"
               ><img src="../assets/icons/instagram.svg" alt="Instagram"

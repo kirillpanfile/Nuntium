@@ -21,13 +21,14 @@ const routes = [
   {
     path: "/tags",
     component: () => import("../views/Tags"),
-    name: "tags"
+    name: "tags",
   },
   {
     path: "/profile",
     component: () => import("../views/Profile"),
-    name: "profile"
-  }
+    name: "profile",
+  },
+  {
     path: "/about",
     component: () => import("../views/About"),
     name: "about",
@@ -40,7 +41,7 @@ const routes = [
   {
     path: "/register",
     component: () => import("../views/Register"),
-    name: "register"
+    name: "register",
   },
 ];
 
