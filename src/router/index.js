@@ -24,6 +24,10 @@ const routes = [
     name: "tags"
   },
   {
+    path: "/profile",
+    component: () => import("../views/Profile"),
+    name: "profile"
+  }
     path: "/about",
     component: () => import("../views/About"),
     name: "about",
