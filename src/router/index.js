@@ -16,7 +16,7 @@ const routes = [
   {
     path: "/screenlock",
     component: () => import("../views/ScreenLock"),
-    name: "screenlock"
+    name: "screenlock",
   },
   {
     path: "/tags",
@@ -28,6 +28,20 @@ const routes = [
     component: () => import("../views/Profile"),
     name: "profile"
   }
+    path: "/about",
+    component: () => import("../views/About"),
+    name: "about",
+  },
+  {
+    path: "/:catchAll(.*)",
+    component: () => import("../views/404"),
+    name: "404",
+  },
+  {
+    path: "/register",
+    component: () => import("../views/Register"),
+    name: "register"
+  },
 ];
 
 const router = createRouter({

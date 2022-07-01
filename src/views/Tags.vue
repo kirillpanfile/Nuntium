@@ -12,48 +12,35 @@
       <div
         class="tags-page__variant"
         v-for="item in currentTypeSearch"
-        :key="item"
-        @click="currentTag = item"
+        :key="item._id"
+        @click="currentTag = item.name"
       >
-        #{{ item.toLowerCase() }}
+        #{{ item.name }}
       </div>
     </div>
     <transition-group name="list">
       <HomeTagCard
-        v-for="card in tagPosts"
-        :key="card.id"
-        :title="card.title"
-        :description="card.description"
-        :author="card.author"
-        :date="card.date"
-        :image="card.image"
-        :tag="card.tag"
+        v-for="item in tagPosts"
+        :key="item._id"
+        :title="item.title"
+        :description="item.desc"
+        :author="item.username"
+        :date="item.createdAt"
+        :image="item.photo"
+        :tag="item.categories"
       />
     </transition-group>
   </div>
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapState } from "vuex";
 import HomeTagCard from "@/components/UI/HomeTagCard";
 export default {
   name: "tags",
 
   data() {
     return {
-      tags: [
-        "Technology",
-        "Open Source",
-        "Minimalism",
-        "Self-help",
-        "Animals",
-        "Nature",
-        "Web Technologies",
-        "Career",
-        "Life",
-        "Food",
-        "Sports",
-      ],
       searchTag: [],
       currentTag: "",
     };
@@ -61,17 +48,16 @@ export default {
 
   computed: {
     ...mapGetters(["tagPosts"]),
+    ...mapState(["allTags"]),
     currentTypeSearch() {
-      return this.tags.filter((item) => item.includes(this.currentTag));
-      //   this.tags =
-      //     this.currentTag.length != 0
-      //       ? this.tags.filter((item) => item.includes(this.currentTag))
-      //       : this.tags;
+      return this.allTags.filter((item) => {
+        return item.name.includes(this.currentTag);
+      });
     },
   },
   watch: {
     currentTag(newTag) {
-      this.$store.dispatch("getItemsByTag", newTag.toUpperCase());
+      this.$store.commit("setTag", newTag);
     },
   },
   components: {

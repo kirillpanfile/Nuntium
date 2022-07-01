@@ -1,0 +1,39 @@
+.dropdown{
+    font-family: "Open Sans";
+    &__wrapper{
+        z-index: 2;
+        position: absolute;
+        max-width: 170px;
+        width: 170px;
+        max-height: 223px;
+        border-radius: 15px;
+        background-color: #fff;
+        border: 1px solid #F3F3F3;
+        top: 70px;
+        right: 0;
+    }
+    &__block{
+        &:nth-child(1){
+            padding: 20px 24px 10px 24px;
+        }
+        &:last-child{
+            padding: 10px 24px 20px 24px
+        }
+    }
+    &__title{
+        font-size: 16px;
+    }
+    &__mail{
+        font-size: 14px;
+        color: rgba(28, 28, 28, 0.8);
+        margin-top: 5px;
+    }
+    hr{
+        border: 1px solid rgba(28, 28, 28, 0.1);
+    }
+    li{
+        margin-top: 5px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+}

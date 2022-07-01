@@ -15,8 +15,22 @@ export default {
   },
   mounted() {
     this.$store.dispatch("fetchPosts").then(() => {
+      this.$store.dispatch("fetchTags");
       this.loaded = true;
     });
+    if (this.getCookie("token"))
+      this.$store.dispatch("loginByJwt", this.getCookie("token"));
+  },
+  methods: {
+    getCookie(name) {
+      const pattern = RegExp(name + "=.[^;]*");
+      const matched = document.cookie.match(pattern);
+      if (matched) {
+        const cookie = matched[0].split("=");
+        return cookie[1];
+      }
+      return false;
+    },
   },
 };
 </script>
