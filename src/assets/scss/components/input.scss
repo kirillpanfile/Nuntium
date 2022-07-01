@@ -1,5 +1,6 @@
 .input{
     &__wrapper{
+        display: flex;
         margin-top: 15px;
         max-width: 342px;
         width: 342px;
@@ -11,19 +12,32 @@
     &__icon{
         padding: 15px;
         max-height: 58px;
+        height: 100%;     
+    }
+    &__vision{
+        padding: 15px;
+        max-height: 58px;
         height: 100%;
-        
+        img{
+            height: 100%;
+            object-fit: cover;
+            z-index: 5;
+            cursor: pointer;
+        }
     }
     input{
         font-family: "Open Sans";
         background-color: #F8F8F8;
         font-size: 16px;
-        padding: 18px 10px 18px 0;
+        padding: 18px 0;
         float: right;
         width: calc(100% - 58px);
         border-radius:0 10px 10px 0;
         max-height: 58px;
         outline: none;
+    }
+    &__username{
+        padding: 18px 20px 18px 0 !important;
     }
 }
 
