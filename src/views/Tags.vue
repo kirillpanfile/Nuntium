@@ -11,7 +11,7 @@
     <div class="tags-page__choices">
       <div
         class="tags-page__variant"
-        v-for="item in allTags"
+        v-for="item in currentTypeSearch"
         :key="item._id"
         @click="currentTag = item.name"
       >
@@ -50,22 +50,9 @@ export default {
     ...mapGetters(["tagPosts"]),
     ...mapState(["allTags"]),
     currentTypeSearch() {
-      return this.allTags.filter((item) =>
-        item.categories.some((tag) => {
-          console.log(tag);
-          return tag.includes(this.currentTag);
-        })
-      );
-    },
-  },
-  methods: {
-    searchTag1() {
-      return this.allTags.filter((item) =>
-        item.categories.some((tag) => {
-          console.log(tag);
-          return tag.includes(this.currentTag);
-        })
-      );
+      return this.allTags.filter((item) => {
+        return item.name.includes(this.currentTag);
+      });
     },
   },
   watch: {

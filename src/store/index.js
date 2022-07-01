@@ -14,7 +14,9 @@ export default createStore({
     },
     tagPosts: (state) => {
       return state.allPosts.filter((post) =>
-        post.categories.includes(state.tag)
+        post.categories.some((cat) => {
+          return cat.includes(state.tag);
+        })
       );
     },
   },
