@@ -28,9 +28,17 @@
             <img src="../assets/icons/search.svg" alt="" />
             <input type="search" required />
           </form>
-          <router-link to="/login">
+          <router-link to="/login" v-if="!$store.state.isAuth">
             <app-button>Login</app-button>
           </router-link>
+          <div class="header-profile" v-else>
+            <div class="header-image">
+              <img :src="user.profilePic" alt="Error" @click="dropDownOpen = !dropDownOpen" />
+            </div>
+            <app-drop-down v-if="dropDownOpen"></app-drop-down>
+          </div>
+          
+
         </nav>
       </div>
       <div
@@ -48,13 +56,16 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 import AppButton from "./UI/AppButton.vue";
+import AppDropDown from "./UI/AppDropDown.vue";
 export default {
-  components: { AppButton },
+  components: { AppButton, AppDropDown },
   name: "AppNavbar",
   data() {
     return {
       menuOpen: false,
+      dropDownOpen: false,
     };
   },
   watch: {
@@ -63,6 +74,7 @@ export default {
     },
   },
   computed: {
+    ...mapState(['user']),
     isScreenLock() {
       return this.$route.path.includes("/screenlock");
     },
