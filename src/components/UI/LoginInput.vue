@@ -1,7 +1,8 @@
 <template>
     <div class="input input__wrapper">
         <img class="input__icon" src="@/assets/icons/user.svg" v-if="type === 'username' " alt="Error" />
-        <img class="input__icon" src="@/assets/icons/key.svg" v-else alt="Error">
+        <img class="input__icon" src="@/assets/icons/key.svg" v-else-if="type === 'password'" alt="Error">
+        <img class="input__icon" src="@/assets/icons/email.svg" v-else alt="Error">
         <input type="text" :placeholder="placeholder" />
     </div>
     
@@ -17,7 +18,7 @@ export default{
             required: false,
             default: 'username',
             validator(val){
-                return ['username','password'].includes(val)
+                return ['username','password','email'].includes(val)
             }
         },
         placeholder:{

@@ -39,6 +39,29 @@
         .login__forgot{
             color: #1C1C1C50;
             font-size: 12px;
+            &:hover{
+                text-decoration: underline;
+            }
+        }
+    }
+    &__register{
+        margin-top: 10px;
+        font-size: 14px;
+        color: #1C1C1C80
+    }
+    &__signUp{
+        &:hover{
+            text-decoration: underline;
+        }
+    }
+    &__signIn{
+        margin-top: 10px;
+        font-size: 14px;
+        color: #1C1C1C80
+    }
+    &__translate{
+        &:hover{
+            text-decoration: underline;
         }
     }
 }

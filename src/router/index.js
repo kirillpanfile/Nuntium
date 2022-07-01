@@ -33,6 +33,11 @@ const routes = [
     component: () => import("../views/404"),
     name: "404",
   },
+  {
+    path: "/register",
+    component: () => import("../views/Register"),
+    name: "register"
+  },
 ];
 
 const router = createRouter({
