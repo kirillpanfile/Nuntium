@@ -1,7 +1,7 @@
 <template>
   <div class="card">
     <div class="card-img">
-      <img :src="require(`../../assets/posts/${image}`)" alt="Error" />
+      <img :src="'http://localhost:5000/images/' + image" alt="Error" />
     </div>
     <div class="card__content">
       <h4 class="card__content-tag">{{ tag }}</h4>

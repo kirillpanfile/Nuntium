@@ -10,11 +10,12 @@ export default {
   name: "App",
   data() {
     return {
-      loaded: true,
+      loaded: false,
     };
   },
   async mounted() {
     this.$store.dispatch("fetchPosts").then(() => {
+      this.$store.dispatch("fetchTags");
       this.loaded = true;
     });
   },
