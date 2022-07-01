@@ -4,7 +4,7 @@ import store from "./store";
 import router from "./router";
 import "../src/assets/scss/style.scss";
 import components from "./components";
-// import server from "./mirage/server";
+import server from "./mirage/server";
 
 const app = createApp(App);
 components.forEach((component) => {
