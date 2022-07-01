@@ -6,28 +6,26 @@
         {{ featuredPost.title }}
       </h1>
       <div class="block__name">
-        <p>{{ featuredPost.author }}</p>
+        <p>{{ featuredPost.username }}</p>
         <div class="block__dot"></div>
-        <p>{{ featuredPost.date }} (10 mins read)</p>
+        <p>{{ currentTime }}</p>
       </div>
       <h2 class="block__text">
         {{ sliceText }}
       </h2>
     </div>
   </section>
-
   <section class="editor">
     <div class="editor__title">Editor's Picks</div>
     <div class="editor__wrapper">
       <home-card
         v-for="item in featuredPosts"
         :key="item.id"
-        :tag="item.tag"
         :title="item.title"
-        :description="item.description"
-        :author="item.author"
-        :date="item.date"
-        :image="item.image"
+        :description="item.desc"
+        :author="item.username"
+        :date="item.createdAt"
+        :image="item.photo"
       ></home-card>
     </div>
   </section>
@@ -48,31 +46,32 @@
   </section>
 
   <section class="tags">
-    <select v-model="currentTag" class="tags__select" v-if="isMobile">
-      <option v-for="item in tags" :value="item">
-        {{ item }}
+    <select v-model="tag" class="tags__select" v-if="isMobile">
+      <option value="" disabled selected>Select your option</option>
+      <option v-for="item in allTags" :value="item.name">
+        {{ item.name }}
       </option>
     </select>
     <div class="tags__wrapper">
       <div
         class="tags__wrapper-content tags-content"
-        :class="tagPosts.length === 0 ? 'flex-center' : ''"
+        :class="allPosts.length === 0 ? 'flex-center' : ''"
       >
         <transition-group v-if="tagPosts.length !== 0" name="list">
           <HomeTagCard
             v-for="item in tagPosts"
-            :key="item.id"
+            :key="item._id"
             :title="item.title"
-            :description="item.description"
-            :author="item.author"
-            :date="item.date"
-            :image="item.image"
-            :tag="item.tag"
+            :description="item.desc"
+            :author="item.username"
+            :date="item.createdAt"
+            :image="item.photo"
+            :tag="item.categories"
           />
         </transition-group>
         <div v-else class="tags__empty">
           There are no card with tag:
-          <strong>{{ currentTag }}</strong>
+          <strong>{{ tag }}</strong>
         </div>
       </div>
       <div class="tags__wrapper-list tags-list" v-if="!isMobile">
@@ -80,11 +79,11 @@
         <div class="tags-list-wrapper">
           <button
             class="tags-list-item"
-            v-for="(item, index) in tags"
+            v-for="(item, index) in allTags"
             :key="index"
-            @click="currentTag = item"
+            @click="tag = item.name"
           >
-            {{ item }}
+            {{ item.name }}
           </button>
         </div>
       </div>
@@ -93,27 +92,14 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
 import HomeCard from "@/components/UI/HomeCard";
 import HomeTagCard from "@/components/UI/HomeTagCard";
+import { mapGetters, mapState } from "vuex";
 export default {
   data() {
     return {
       DefaultWidth: window.innerWidth,
-      tags: [
-        "Technology",
-        "Open Source",
-        "Minimalism",
-        "Self-help",
-        "Animals",
-        "Nature",
-        "Web Technologies",
-        "Career",
-        "Life",
-        "Food",
-        "Sports",
-      ],
-      currentTag: "FOOD",
+      tag: "",
     };
   },
   components: {
@@ -124,28 +110,85 @@ export default {
     window.addEventListener("resize", () => {
       this.DefaultWidth = window.innerWidth;
     });
-    if (!this.$store.state.tagPosts.length)
-      this.$store.dispatch("getItemsByTag", "FOOD");
-  },
-  watch: {
-    currentTag(newTag) {
-      this.$store.dispatch("getItemsByTag", newTag.toUpperCase());
-    },
+    this.$store.dispatch("fetchTags");
   },
   computed: {
     ...mapGetters(["featuredPost"]),
     ...mapGetters(["featuredPosts"]),
     ...mapGetters(["tagPosts"]),
+    ...mapState(["allTags"]),
+    ...mapState(["allPosts"]),
+    currentTime() {
+      let created = [...this.featuredPost.createdAt];
+      created.length = 10;
+      return created.join("");
+    },
     sliceText() {
-      return (
-        this.featuredPost.description.slice(0, this.DefaultWidth / 4) + "..."
-      );
+      return this.featuredPost.desc.slice(0, this.DefaultWidth / 4) + "...";
     },
     isMobile() {
-      return this.DefaultWidth < 991;
+      return this.DefaultWidth < 768;
+    },
+    currentTag() {
+      return this.allTags[0].name;
+    },
+  },
+  watch: {
+    tag(newTag) {
+      this.$store.commit("setTag", newTag);
     },
   },
 };
+// export default {
+//   data() {
+//     return {
+//       DefaultWidth: window.innerWidth,
+//       tags: [
+//         "Technology",
+//         "Open Source",
+//         "Minimalism",
+//         "Self-help",
+//         "Animals",
+//         "Nature",
+//         "Web Technologies",
+//         "Career",
+//         "Life",
+//         "Food",
+//         "Sports",
+//       ],
+//       currentTag: "FOOD",
+//     };
+//   },
+//   components: {
+//     HomeCard,
+//     HomeTagCard,
+//   },
+//   mounted() {
+//     window.addEventListener("resize", () => {
+//       this.DefaultWidth = window.innerWidth;
+//     });
+//     if (!this.$store.state.tagPosts.length)
+//       this.$store.dispatch("getItemsByTag", "FOOD");
+//   },
+//   watch: {
+//     currentTag(newTag) {
+//       this.$store.dispatch("getItemsByTag", newTag.toUpperCase());
+//     },
+//   },
+//   computed: {
+//     ...mapGetters(["featuredPost"]),
+//     ...mapGetters(["featuredPosts"]),
+//     ...mapGetters(["tagPosts"]),
+//     sliceText() {
+//       return (
+//         this.featuredPost.description.slice(0, this.DefaultWidth / 4) + "..."
+//       );
+//     },
+//     isMobile() {
+//       return this.DefaultWidth < 991;
+//     },
+//   },
+// };
 </script>
 
 <style>

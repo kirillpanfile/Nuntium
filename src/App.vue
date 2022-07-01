@@ -13,8 +13,9 @@ export default {
       loaded: false,
     };
   },
-  mounted() {
+  async mounted() {
     this.$store.dispatch("fetchPosts").then(() => {
+      this.$store.dispatch("fetchTags");
       this.loaded = true;
     });
   },

@@ -1,42 +1,49 @@
 import { createStore } from "vuex";
-
 export default createStore({
   state: {
-    posts: [],
-    tagPosts: [],
+    allPosts: [],
+    allTags: [],
+    tag: "Minimalism",
   },
   getters: {
     featuredPost: (state) => {
-      //return posts with highest samount of views
-      return state.posts.sort((a, b) => b.views - a.views).slice(0, 1)[0];
+      return state.allPosts[0];
     },
     featuredPosts: (state) => {
-      return state.posts.sort(() => 0.5 - Math.random()).slice(0, 4);
+      return state.allPosts.slice(-3);
     },
     tagPosts: (state) => {
-      return state.tagPosts;
+      return state.allPosts.filter((post) =>
+        post.categories.some((cat) => {
+          return cat.toLowerCase().includes(state.tag.toLowerCase());
+        })
+      );
     },
   },
   mutations: {
-    setPosts(state, posts) {
-      state.posts = posts;
+    setAllPosts(state, posts) {
+      state.allPosts = posts;
     },
-    setTagPosts(state, posts) {
-      state.tagPosts = [];
-      state.tagPosts = posts;
+    setAllTags(state, tags) {
+      state.allTags = tags;
+    },
+    setTag(state, tag) {
+      state.tag = tag;
     },
   },
   actions: {
     async fetchPosts({ commit }) {
-      const response = await fetch("api/posts");
+      const response = await fetch(`http://localhost:5000/api/posts`);
       const posts = await response.json();
-      commit("setPosts", posts);
+      commit("setAllPosts", posts);
     },
-    getItemsByTag({ commit }, tag) {
-      commit(
-        "setTagPosts",
-        this.state.posts.filter((post) => post.tag.includes(tag))
-      );
+    async fetchTags({ commit }) {
+      const response = await fetch(`http://localhost:5000/api/categories`);
+      const tags = await response.json();
+      commit("setAllTags", tags);
+    },
+    setTag({ commit }, tag) {
+      commit("setTag", tag);
     },
   },
   modules: {},
