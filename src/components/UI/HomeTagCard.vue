@@ -1,7 +1,7 @@
 <template>
   <div class="tag-card">
     <div class="tag-card__image">
-      <img :src="require(`../../assets/posts/${image}`)" alt="" />
+      <img :src="image" alt="" />
     </div>
     <div class="tag-card__content">
       <div class="tag-card__tag">{{ tag }}</div>
@@ -20,7 +20,7 @@
 export default {
   name: "HomeTagCard",
   props: {
-    tag: String,
+    tag: Array,
     title: String,
     description: String,
     author: String,

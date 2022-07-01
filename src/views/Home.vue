@@ -45,49 +45,53 @@
     </div>
   </section>
 
-  <!-- <section class="tags">
-     <select v-model="currentTag" class="tags__select" v-if="isMobile">
+  <section class="tags">
+     <!-- <select v-model="currentTag" class="tags__select" v-if="isMobile">
       <option v-for="item in tags" :value="item">
         {{ item }}
       </option>
-    </select> 
+    </select>  -->
     <div class="tags__wrapper">
       <div
         class="tags__wrapper-content tags-content"
-        :class="tagPosts.length === 0 ? 'flex-center' : ''"
       >
-        <transition-group v-if="tagPosts.length !== 0" name="list">
+        <transition-group name="list">
           <HomeTagCard
-            v-for="item in tagPosts"
-            :key="item.id"
+            v-for="item in allPosts"
+            :key="item._id"
             :title="item.title"
-            :description="item.description"
-            :author="item.author"
-            :date="item.date"
-            :image="item.image"
-            :tag="item.tag"
+            :description="item.desc"
+            :author="item.username"
+            :date="item.updatedAt"
+            :image="'http://localhost:5000/images/' + item.photo"
+            :tag="item.categories"
           />
         </transition-group>
-        <div v-else class="tags__empty">
+        <!-- <div v-else class="tags__empty">
           There are no card with tag:
            <strong>{{ currentTag }}</strong> 
-        </div>
+        </div> -->
       </div>
       <div class="tags__wrapper-list tags-list" v-if="!isMobile">
         <h1 class="tags-list-title">tags.</h1>
         <div class="tags-list-wrapper">
           <button
             class="tags-list-item"
-            v-for="(item, index) in tags"
-            :key="index"
-            @click="currentTag = item"
+            v-for="item in allTags"
+            :key="item._id"
+            @click="selectedTag = item.name"
           >
-            {{ item }}
+            {{ item.name }}
           </button>
         </div>
       </div>
     </div>
-  </section> -->
+  </section>
+  <ul class="test">
+    <!-- <li v-for="item in allPosts" :key="item.id">{{item.categories}}</li> -->
+    <li></li>
+  </ul>
+  
 </template>
 
 <script>
@@ -98,6 +102,7 @@ export default {
   data() {
     return {
       DefaultWidth: window.innerWidth,
+      selectedTag: 'Technology',
     };
   },
   components: {
@@ -113,7 +118,9 @@ export default {
   computed: {
     ...mapGetters(["featuredPost"]),
     ...mapGetters(["featuredPosts"]),
+    ...mapGetters(["selectedPosts"]),
     ...mapState(["allTags"]),
+    ...mapState(["allPosts"]),
     currentTime() {
       let created = [...this.featuredPost.createdAt];
       created.length = 10;
@@ -125,6 +132,17 @@ export default {
     isMobile() {
       return this.DefaultWidth < 768;
     },
+  },
+  watch:{
+      selectedTag(){
+        let tags = []
+        // for(let i = 0; i < this.allPosts.length; i++){
+        //   tags[i].id = this.allPosts[i]._id
+        //   tags[i].category = this.allPosts[i].categories
+        // }
+        console.log(this.selectedPosts);
+        // console.log(tags)
+      }
   },
 };
 // export default {

@@ -22,7 +22,7 @@ const routes = [
     path: "/tags",
     component: () => import("../views/Tags"),
     name: "tags"
-  }
+  },
 ];
 
 const router = createRouter({

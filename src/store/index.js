@@ -11,6 +11,13 @@ export default createStore({
     featuredPosts: (state) => {
       return state.allPosts.slice(-3);
     },
+    selectedPosts: (state) => {
+      let arr = []
+      state.allPosts.forEach((element)=>{
+        arr[element] = state.allPosts.categories
+      })
+      return arr;
+    }
   },
   mutations: {
     setAllPosts(state, posts) {
