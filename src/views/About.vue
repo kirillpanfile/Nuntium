@@ -59,7 +59,7 @@ export default{
     data(){
         return{
             images: ['about-5.jpg','about-4.jpg','about-3.jpg'],
-            icons: ['instagram.svg','twitter.svg','linkedIn.svg']
+            icons: ['twitter-white.svg','instagram-white.svg','linkedIn-white.svg']
         }
     }
 }
