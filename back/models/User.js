@@ -7,6 +7,10 @@ const UserSchema = new mongoose.Schema(
       required: true,
       unique: true,
     },
+    name: {
+      type: String,
+      default: "Here comes your name!",
+    },
     email: {
       type: String,
       required: true,
@@ -18,12 +22,31 @@ const UserSchema = new mongoose.Schema(
     },
     profilePic: {
       type: String,
-      default:
-        "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png",
+      default: "profile.png",
+    },
+    description: {
+      type: String,
+      default: "Here comes your description!",
     },
     jwt: {
       type: String,
       required: true,
+    },
+    linkedin: {
+      type: String,
+      default: "",
+    },
+    instagram: {
+      type: String,
+      default: "",
+    },
+    twitter: {
+      type: String,
+      default: "",
+    },
+    website: {
+      type: String,
+      default: "",
     },
   },
   { timestamps: true }

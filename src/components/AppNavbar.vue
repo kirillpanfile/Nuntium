@@ -33,12 +33,16 @@
           </router-link>
           <div class="header-profile" v-else>
             <div class="header-image">
-              <img :src="user.profilePic" alt="Error" @click="dropDownOpen = !dropDownOpen" />
+              <img
+                :src="'http://localhost:5000/images/' + user.profilePic"
+                alt="Error"
+                @click="dropDownOpen = !dropDownOpen"
+                v-if="user.profilePic"
+              />
+              <span v-else>loading...</span>
             </div>
             <app-drop-down v-if="dropDownOpen"></app-drop-down>
           </div>
-          
-
         </nav>
       </div>
       <div
@@ -74,7 +78,7 @@ export default {
     },
   },
   computed: {
-    ...mapState(['user']),
+    ...mapState(["user"]),
     isScreenLock() {
       return this.$route.path.includes("/screenlock");
     },

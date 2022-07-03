@@ -3,10 +3,10 @@
     <div class="home__block block">
       <div class="block__feature">FEATURED ARTICLE</div>
       <h1 class="block__title">
-        {{ featuredPost.title }}
+        {{ post.title }}
       </h1>
       <div class="block__name">
-        <p>{{ featuredPost.username }}</p>
+        <p>{{ post.username }}</p>
         <div class="block__dot"></div>
         <p>{{ currentTime }}</p>
       </div>
@@ -94,8 +94,10 @@
 <script>
 import HomeCard from "@/components/UI/HomeCard";
 import HomeTagCard from "@/components/UI/HomeTagCard";
+import utils from "@/utils";
 import { mapGetters, mapState } from "vuex";
 export default {
+  extends: utils,
   data() {
     return {
       DefaultWidth: window.innerWidth,
@@ -110,25 +112,19 @@ export default {
     window.addEventListener("resize", () => {
       this.DefaultWidth = window.innerWidth;
     });
+    console.log(utils);
     this.$store.dispatch("fetchTags");
   },
   computed: {
-    ...mapGetters(["featuredPost"]),
-    ...mapGetters(["featuredPosts"]),
-    ...mapGetters(["tagPosts"]),
-    ...mapState(["allTags"]),
-    ...mapState(["allPosts"]),
-    currentTime() {
-      let created = [...this.featuredPost.createdAt];
-      created.length = 10;
-      return created.join("");
-    },
-    sliceText() {
-      return this.featuredPost.desc.slice(0, this.DefaultWidth / 4) + "...";
-    },
-    isMobile() {
-      return this.DefaultWidth < 768;
-    },
+    ...mapGetters({
+      post: "featuredPost",
+      tagPosts: "tagPosts",
+      featuredPosts: "featuredPosts",
+    }),
+    ...mapState({
+      allTags: "allTags",
+      allPosts: "allPosts",
+    }),
     currentTag() {
       return this.allTags[0].name;
     },
@@ -139,56 +135,6 @@ export default {
     },
   },
 };
-// export default {
-//   data() {
-//     return {
-//       DefaultWidth: window.innerWidth,
-//       tags: [
-//         "Technology",
-//         "Open Source",
-//         "Minimalism",
-//         "Self-help",
-//         "Animals",
-//         "Nature",
-//         "Web Technologies",
-//         "Career",
-//         "Life",
-//         "Food",
-//         "Sports",
-//       ],
-//       currentTag: "FOOD",
-//     };
-//   },
-//   components: {
-//     HomeCard,
-//     HomeTagCard,
-//   },
-//   mounted() {
-//     window.addEventListener("resize", () => {
-//       this.DefaultWidth = window.innerWidth;
-//     });
-//     if (!this.$store.state.tagPosts.length)
-//       this.$store.dispatch("getItemsByTag", "FOOD");
-//   },
-//   watch: {
-//     currentTag(newTag) {
-//       this.$store.dispatch("getItemsByTag", newTag.toUpperCase());
-//     },
-//   },
-//   computed: {
-//     ...mapGetters(["featuredPost"]),
-//     ...mapGetters(["featuredPosts"]),
-//     ...mapGetters(["tagPosts"]),
-//     sliceText() {
-//       return (
-//         this.featuredPost.description.slice(0, this.DefaultWidth / 4) + "..."
-//       );
-//     },
-//     isMobile() {
-//       return this.DefaultWidth < 991;
-//     },
-//   },
-// };
 </script>
 
 <style>

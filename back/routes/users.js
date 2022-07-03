@@ -58,4 +58,16 @@ router.get("/:id", async (req, res) => {
   }
 });
 
+//GET USER BY USERNAME
+router.get("/", async (req, res) => {
+  try {
+    const username = req.query.name;
+    const user = await User.findOne({ username: username });
+    const { password, jwt, ...others } = user._doc;
+    res.status(200).json(others);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 module.exports = router;

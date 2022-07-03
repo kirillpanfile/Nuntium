@@ -1,96 +1,128 @@
 .profile {
-    margin-top: 150px;
+  @include adaptiveValue("margin-top", 150, 60);
 
-    &__wrapper {
-        display: flex;
-        gap: 75px;
-        width: max-content;
-        margin: 0 auto;
+  &__wrapper {
+    display: flex;
+    @include adaptiveValue("gap", 75, 32);
+    width: max-content;
+    margin: 0 auto;
+    @media (max-width: $mobile) {
+      flex-direction: column;
     }
+  }
 
-    &__info {
-        font-family: Open sans;
+  &__image {
+    @include adaptiveValue("width", 200, 180);
+    @include adaptiveValue("height", 200, 180);
+    @media (max-width: $mobile) {
+      margin: 0 auto;
     }
-
-    &__user {
-        font-family: Libre Baskerville;
-        font-size: 42px;
-        font-weight: 700;
-
-        &-tag {
-            color: $secondColor;
-        }
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 100%;
     }
-
-    &__descr {
-        margin-top: 10px;
-        line-height: 22px;
-        max-width: 445px;
+  }
+  &__info {
+    font-family: "Open sans";
+    @media (max-width: $mobile) {
+      text-align: center;
     }
+  }
 
-    &__links {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-top: 13px;
-    }
+  &__user {
+    font-family: Libre Baskerville;
+    @include adaptiveValue("font-size", 42, 24);
+    font-weight: 700;
 
-    &__block {
-        display: flex;
-        align-items: center;
-        gap: 15px;
+    &-tag {
+      color: $secondColor;
+      margin-top: 12px;
     }
+  }
 
-    &__website {
-        display: flex;
-        align-items: center;
-        gap: 8px;
+  &__descr {
+    margin-top: 10px;
+    line-height: 22px;
+    max-width: 445px;
+  }
+
+  &__links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 13px;
+  }
+
+  &__block {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+
+  &__website {
+    a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
+  }
 }
 
 .interior {
-    margin-top: 115px;
-    background: url('../profile/Article-background.jpg') center center/cover no-repeat;
-    height: 450px;
-    display: flex;
-    justify-content: flex-end;
+  @include adaptiveValue("margin-top", 115, 40);
+  background: url("../profile/Article-background.jpg") center center/cover
+    no-repeat;
+  height: 450px;
+  display: flex;
+  justify-content: flex-end;
+  @media (max-width: $mobile) {
+    align-items: center;
+    justify-content: center;
+  }
 
-    &__block {
-        padding: 44px 32px;
-        background-color: $white;
-        @include adaptiveValue("padding-top", 44, 14);
-        @include adaptiveValue("padding-left", 32, 14);
-        @include adaptiveValue("padding-right", 32, 14);
-        @include adaptiveValue("padding-bottom", 44, 14);
-        @include adaptiveValue("width", 403, 260);
-        @include adaptiveValue("height", 393, 250);
-        margin: 28px 35px 0px 0px;
+  &__block {
+    @include adaptiveValue("padding", 40, 26);
+    background-color: $white;
+    @include adaptiveValue("width", 403, 300);
+    @include adaptiveValue("height", 393, 280);
+    @include adaptiveValue("margin-right", 33, 15);
+    @include adaptiveValue("margin-top", 28, 15);
 
-        &-feature {
-            color: $secondColor;
-            font-family: Open sans;
-            font-size: 20px;
-        }
-
-        &-title {
-            margin-top: 5px;
-            font-size: 33px;
-            font-weight: 700;
-            line-height: 41px;
-        }
-
-        &-name {
-            color: $secondColor;
-            font-family: Open sans;
-
-            span {
-                font-size: 14px;
-            }
-        }
-
-        &-text {
-            margin-top: 15px;
-            line-height: 24px;
-        }
+    @media (max-width: $mobile) {
+      margin: 0;
     }
+    &-feature {
+      color: $secondColor;
+      font-family: "Open sans";
+      @include adaptiveValue("font-size", 20, 12);
+    }
+
+    &-title {
+      margin-top: 5px;
+      font-size: 33px;
+      font-weight: 700;
+      line-height: 41px;
+      @include adaptiveValue("font-size", 28, 20);
+      @include adaptiveValue("line-height", 41, 30);
+    }
+
+    &-name {
+      color: $secondColor;
+      font-family: "Open sans";
+
+      margin-top: 6px;
+      span {
+        font-size: 14px;
+      }
+    }
+
+    &-text {
+      margin-top: 15px;
+      line-height: 24px;
+      @include adaptiveValue("font-size", 16, 13);
+      @include adaptiveValue("line-height", 24, 22);
+    }
+  }
 }

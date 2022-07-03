@@ -1,7 +1,6 @@
 import { createStore } from "vuex";
 import router from "../router";
 
-import config from "@/config";
 export default createStore({
   state: {
     allPosts: [],
@@ -9,13 +8,18 @@ export default createStore({
     tag: "Minimalism",
     isAuth: false,
     user: {},
+    currentUserProfile: {},
+    userPosts: [],
   },
   getters: {
     featuredPost: (state) => {
-      return state.allPosts.sort((a, b) => b.createdAt - a.createdAt)[0];
+      return [...state.allPosts].sort((a, b) => b.createdAt - a.createdAt)[0];
     },
     featuredPosts: (state) => {
-      return state.allPosts.sort(() => 0.5 - Math.random()).slice(0, 3);
+      return [...state.allPosts].sort(() => 0.5 - Math.random()).slice(0, 3);
+    },
+    userFeaturedPost: (state) => {
+      return state.userPosts.filter((post) => post.featured)[0];
     },
     tagPosts: (state) => {
       return state.allPosts.filter((post) =>
@@ -41,14 +45,20 @@ export default createStore({
     setUser(state, user) {
       state.user = user;
     },
+    setUserProfile(state, profile) {
+      state.currentUserProfile = profile;
+    },
+    setUserPosts(state, posts) {
+      state.userPosts = posts;
+    },
   },
   actions: {
     async fetchPosts({ commit }) {
-      const response = await fetch(config.posts);
+      const response = await fetch(process.env.VUE_APP_POSTS);
       commit("setAllPosts", await response.json());
     },
     async fetchTags({ commit }) {
-      const response = await fetch(config.categories);
+      const response = await fetch(process.env.VUE_APP_CATEGORIES);
       commit("setAllTags", await response.json());
     },
     setTag({ commit }, tag) {
@@ -56,7 +66,7 @@ export default createStore({
     },
     async createUser(ctx, user) {
       try {
-        const response = await fetch(config.register, {
+        const response = await fetch(process.env.VUE_APP_REGISTER, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -73,7 +83,7 @@ export default createStore({
     },
     async login({ commit }, data) {
       try {
-        const response = await fetch(config.login, {
+        const response = await fetch(process.env.VUE_APP_LOGIN, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -95,7 +105,7 @@ export default createStore({
     },
     async loginByJwt({ commit }, jwt) {
       commit("setIsAuth", true);
-      const response = await fetch(config.login, {
+      const response = await fetch(process.env.VUE_APP_LOGIN, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -103,6 +113,22 @@ export default createStore({
         },
       });
       commit("setUser", await response.json());
+    },
+    async getUser({ commit }, id) {
+      console.log(id);
+
+      const response = await fetch(process.env.VUE_APP_USERS + "?name=" + id, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      commit("setUserProfile", await response.json());
+    },
+    async getUserPosts({ commit }, name) {
+      const response = await fetch(process.env.VUE_APP_POSTS + "?user=" + name);
+      console.log(name);
+      commit("setUserPosts", await response.json());
     },
   },
   modules: {},
